@@ -5,6 +5,7 @@
     <color name="colorAccent">#000000</color>
     <color name="colorTheme">#000000</color>
     <color name="colorThemeDark">#3e3e3e</color>
+    <color name="golden">#9f8202</color>
     <color name="colorThemeGolden">#9f8202</color>
     <color name="black">#000</color>
     <color name="white">#ffffff</color>
