@@ -5,21 +5,25 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="My Profile" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_wallet"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="My Wallet" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Top players" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Matches on Youtube" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="About EBG Soldier" />
     </group>
 
     <item android:title="Communicate">
@@ -30,8 +34,8 @@
                 android:title="Share" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:icon="@drawable/ic_pro_logout"
+                android:title="Logout" />
         </menu>
     </item>
 
