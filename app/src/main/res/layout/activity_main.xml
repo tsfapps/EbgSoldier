@@ -87,8 +87,8 @@
         android:background="?android:attr/windowBackground"
         app:itemBackground="@color/black"
         android:foreground="?attr/selectableItemBackground"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
+        app:itemIconTint="@drawable/nav_button_selector"
+        app:itemTextColor="@drawable/nav_button_selector"
         app:menu="@menu/navigation_item"
         app:labelVisibilityMode="labeled"/>
 
