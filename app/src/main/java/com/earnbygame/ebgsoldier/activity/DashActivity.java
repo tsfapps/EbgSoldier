@@ -118,7 +118,7 @@ public class DashActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_wallet) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_top_players) {
 
         } else if (id == R.id.nav_manage) {
 
