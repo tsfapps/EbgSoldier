@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.earnbygame.ebgsoldier.activity.DashActivity"
+    tools:showIn="@layout/app_bar_dash">
+    <FrameLayout
+        android:layout_below="@+id/appbar"
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_above="@+id/navigation"
+        />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:itemBackground="@color/black"
+        android:foreground="?attr/selectableItemBackground"
+        app:itemIconTint="@drawable/nav_button_selector"
+        app:itemTextColor="@drawable/nav_button_selector"
+        app:menu="@menu/navigation_item"
+        app:labelVisibilityMode="labeled"/>
+</RelativeLayout>
