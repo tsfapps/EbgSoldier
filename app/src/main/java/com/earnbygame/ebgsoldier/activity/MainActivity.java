@@ -8,7 +8,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.earnbygame.ebgsoldier.R;
+import com.earnbygame.ebgsoldier.fragment.EarnFragment;
 import com.earnbygame.ebgsoldier.fragment.JoinFragment;
+import com.earnbygame.ebgsoldier.fragment.LiveFragment;
+import com.earnbygame.ebgsoldier.fragment.ProfileFragment;
+import com.earnbygame.ebgsoldier.fragment.ResultFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,15 +35,19 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
            switch (menuItem.getItemId()){
                case R.id.nav_ref_earn:
+                    mFragmentManager.beginTransaction().replace(R.id.frame_container,new EarnFragment()).commit();
                     return true;
                case R.id.nav_live:
+                    mFragmentManager.beginTransaction().replace(R.id.frame_container,new LiveFragment()).commit();
                     return true;
                case R.id.nav_join:
                     mFragmentManager.beginTransaction().replace(R.id.frame_container,new JoinFragment()).commit();
                     return true;
                case R.id.nav_result:
+                    mFragmentManager.beginTransaction().replace(R.id.frame_container,new ResultFragment()).commit();
                     return true;
                case R.id.nav_profile:
+                    mFragmentManager.beginTransaction().replace(R.id.frame_container,new ProfileFragment()).commit();
                     return true;
 
            }
