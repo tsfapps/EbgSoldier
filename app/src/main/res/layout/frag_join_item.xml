@@ -1,9 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
+    android:elevation="22dp"
+    android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="8dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"></LinearLayout>
+    android:layout_height="220dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <LinearLayout
+            android:background="@color/black"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                tools:ignore="NestedWeights">
+                <android.support.v7.widget.CardView
+                    android:layout_margin="4dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:cardCornerRadius="30dp">
+                    <ImageView
+                        android:layout_alignParentTop="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_launcher_foreground"
+                        android:id="@+id/iv_laundry"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </android.support.v7.widget.CardView>
+                <LinearLayout
+                    android:layout_margin="4dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                <TextView
+                    android:text="Match 7894"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                  android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+                    <LinearLayout
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/grey"
+                    android:text="Date : 20 May 2019"
+                    android:textSize="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    tools:ignore="SmallSp" />
+                <TextView
+                    android:textColor="@color/grey"
+                    android:text="Time : 3:00 PM"
+                    android:textSize="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    tools:ignore="SmallSp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:id="@+id/ll_price_laundryWash"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="1st PRIZE"
+                            style="@style/tv_main" />
+
+                        <TextView
+                            android:text="PER KILL"
+                            style="@style/tv_main" />
+                        <TextView
+                            android:text="ENTRY FEES"
+                            style="@style/tv_main" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:gravity="center"
+                        android:id="@+id/ll_total_laundry_wash"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="5000 ₹"
+                            style="@style/tv_main_bold" />
+                        <TextView
+
+                            android:text="100 ₹"
+                            style="@style/tv_main_bold"/>
+                        <TextView
+                            android:text="50 ₹"
+                            style="@style/tv_main_bold"/>
+
+
+                    </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="TYPE"
+                        style="@style/tv_main" />
+
+                    <TextView
+                        android:text="VERSION"
+                        style="@style/tv_main" />
+                    <TextView
+                        android:text="MAP"
+                        style="@style/tv_main" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="DUO"
+                            style="@style/tv_main_bold" />
+                        <TextView
+
+                            android:text="TPP"
+                            style="@style/tv_main_bold"/>
+                        <TextView
+                            android:text="ERANGEL"
+                            style="@style/tv_main_bold"/>
+                    </LinearLayout>
+
+                <View
+                    android:layout_marginTop="8dp"
+                    android:background="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+                <LinearLayout
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_alignParentTop="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="TOTAL"
+                        style="@style/tv_main_bottom" />
+
+                    <TextView
+                        android:text="JOINED"
+                        style="@style/tv_main_bottom" />
+                    <TextView
+                        android:text="REMAIN"
+                        style="@style/tv_main_bottom" />
+                    <TextView
+                        style="@style/tv_main_bottom" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="100"
+                            style="@style/tv_main_bold_bottom" />
+                        <TextView
+
+                            android:text="39"
+                            style="@style/tv_main_bold_bottom"/>
+                        <TextView
+                            android:text="61"
+                            style="@style/tv_main_bold_bottom"/>
+                        <Button
+                            android:background="@drawable/bg_btn_main"
+                            android:text="JOIN"
+                            style="@style/tv_main_bold"/>
+                    </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
 </android.support.v7.widget.CardView>
