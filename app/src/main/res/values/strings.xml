@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Ebg Soldier</string>
+    <string name="title_ref_earn">Earn</string>
+    <string name="title_live">Live</string>
+    <string name="title_join">Join</string>
+    <string name="title_result">Result</string>
+    <string name="title_profile">Profile</string>
 </resources>
