@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:background="@color/white"
+<LinearLayout
+    android:background="@drawable/bg_main_front"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
     <LinearLayout
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:background="@drawable/bg_simple_transparent"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -16,37 +21,120 @@
             android:id="@+id/tv_profile_name"
             android:textSize="24dp"
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/golden"
             android:gravity="center_horizontal"
             android:text="Tousif Akram"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             />
-        <android.support.v7.widget.CardView
-
-            android:elevation="22dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginEnd="20dp"
-            app:cardCornerRadius="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
             <LinearLayout
                 android:padding="5dp"
-                android:background="@color/white"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <ImageView
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_profile"
-                    android:id="@+id/iv_pro_pic"
-                    android:background="@drawable/bg_iv"
-                    android:scaleType="centerCrop"
+                <android.support.v7.widget.CardView
+                    android:layout_gravity="center_horizontal"
                     android:layout_width="100dp"
-                    android:layout_height="100dp" />
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="50dp">
+                    <ImageView
+                        android:layout_alignParentTop="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ebg_logo"
+                        android:id="@+id/iv_laundry"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </android.support.v7.widget.CardView>
+                <View
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height=".5dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textSize="12sp"
+                            android:text="Match Played"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp" />
+                        <TextView
+                            android:textSize="14dp"
+                            android:textColor="@color/golden"
+                            android:textStyle="bold"
+                            android:text="521"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <View
+                        android:layout_weight=".01"
+                        android:background="@color/white"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textSize="12sp"
+                            android:text="Total Earn"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp" />
+                        <TextView
+                            android:textSize="14dp"
+                            android:textColor="@color/golden"
+                            android:textStyle="bold"
+                            android:text="₹ 55000"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                    <View
+                        android:layout_weight=".01"
+                        android:background="@color/white"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textSize="12sp"
+                            android:text="Total Killed"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp" />
+                        <TextView
+                            android:textSize="14dp"
+                            android:textColor="@color/golden"
+                            android:textStyle="bold"
+                            android:text="4500"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <View
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height=".5dp"/>
 
                 <android.support.v7.widget.CardView
                     app:cardCornerRadius="2dp"
@@ -73,12 +161,12 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:textSize="14sp"
-                        android:textStyle="bold"
+                        android:textStyle="bold" android:text="Edit"
                         android:drawableEnd="@drawable/ic_pro_pen"
                         android:textColor="@color/white"
                         android:id="@+id/tv_edit_profile"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:textAllCaps="true"/>
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
@@ -95,13 +183,15 @@
                         <TextView
                             android:textSize="12sp"
                             android:layout_marginLeft="25dp"
-                            android:hint="Vehicle Number"
+                            android:text="Pub G ID"
+                            android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="20dp" />
                         <TextView
                             android:id="@+id/tv_profile_vehicle_no"
                             android:textSize="14dp"
                             android:textStyle="bold"
+                            android:textColor="@color/golden"
                             android:drawableStart="@drawable/ic_pro_user"
                             android:layout_gravity="center_vertical"
                             android:text="tsfgot@123"
@@ -111,7 +201,7 @@
                     <View
                     android:layout_weight=".01"
                     android:layout_marginTop="3dp"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/white"
                     android:layout_width="0dp"
                     android:layout_margin="10dp"
                     android:layout_height="match_parent"/>
@@ -125,15 +215,17 @@
                     android:layout_height="wrap_content">
                     <TextView
                     android:textSize="12sp"
-                    android:hint="User Type"
+                    android:text="User Type"
+                        android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp" />
                     <TextView
                     android:id="@+id/tv_profile_user_type"
                     android:textSize="14dp"
-                    android:textStyle="bold"
+                        android:textColor="@color/golden"
+                        android:textStyle="bold"
                     android:layout_gravity="center_vertical"
-                    android:text="Sales Man"
+                    android:text="Player"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
@@ -143,9 +235,9 @@
                 </LinearLayout>
                 <View
                     android:layout_marginTop="3dp"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:layout_height=".5dp"/>
                 <!--<LinearLayout-->
                 <!--android:layout_marginTop="20dp"-->
                 <!--android:orientation="vertical"-->
@@ -180,12 +272,15 @@
                         <TextView
                             android:textSize="12sp"
                             android:layout_marginLeft="25dp"
-                            android:hint="Phone Number"
+                            android:text="Phone Number"
+                            android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="20dp" />
                         <TextView
                             android:id="@+id/tv_profile_phone"
                             android:textSize="14dp"
+                            android:textColor="@color/golden"
+
                             android:textStyle="bold"
                             android:drawableStart="@drawable/ic_pro_phone"
                             android:layout_gravity="center_vertical"
@@ -197,7 +292,7 @@
                     android:id="@+id/line_erv_num"
                     android:layout_weight=".01"
                     android:layout_marginTop="3dp"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/white"
                     android:layout_width="0dp"
                     android:layout_margin="10dp"
                     android:layout_height="match_parent"/>
@@ -212,13 +307,16 @@
                     <TextView
                     android:id="@+id/erv_num_label"
                     android:textSize="12sp"
-                    android:hint="Sales Man Id"
+                    android:text="User Id"
+                        android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp" />
                     <TextView
                     android:id="@+id/tv_profile_user_id"
                     android:textSize="14dp"
-                    android:textStyle="bold"
+                        android:textColor="@color/golden"
+
+                        android:textStyle="bold"
                     android:layout_gravity="center_vertical"
                     android:text="SBL000123"
                     android:layout_width="match_parent"
@@ -228,9 +326,9 @@
                 </LinearLayout>
                 <View
                     android:layout_marginTop="3dp"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:layout_height=".5dp"/>
                 <LinearLayout
                     android:layout_marginTop="20dp"
                     android:orientation="vertical"
@@ -239,13 +337,16 @@
                     <TextView
                         android:textSize="12sp"
                         android:layout_marginLeft="25dp"
-                        android:hint="Email"
+                        android:text="Email"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp" />
                     <TextView
                         android:id="@+id/tv_profile_email"
                         android:textSize="14sp"
                         android:textStyle="bold"
+                        android:textColor="@color/golden"
+
                         android:drawableStart="@drawable/ic_pro_email"
                         android:layout_gravity="center_vertical"
                         android:text="test@abp.com"
@@ -255,9 +356,9 @@
                 <View
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="3dp"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:layout_height=".5dp"/>
                 <LinearLayout
                     android:layout_marginTop="20dp"
                     android:orientation="vertical"
@@ -266,7 +367,8 @@
                     <TextView
                         android:textSize="12sp"
                         android:layout_marginLeft="25dp"
-                        android:hint="Adhar Number"
+                        android:text="Adhar Number"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp" />
                     <TextView
@@ -277,15 +379,17 @@
                         android:layout_gravity="center_vertical"
                         android:text="900987876567"
                         android:maxLength="12"
+                        android:textColor="@color/golden"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
                 <View
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="3dp"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:layout_height=".5dp"/>
                 <LinearLayout
                     android:layout_marginTop="20dp"
                     android:orientation="vertical"
@@ -294,7 +398,8 @@
                     <TextView
                         android:textSize="12sp"
                         android:layout_marginLeft="25dp"
-                        android:hint="Address"
+                        android:text="Address"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp" />
                     <TextView
@@ -303,6 +408,7 @@
                         android:textStyle="bold"
                         android:drawableStart="@drawable/ic_pro_address"
                         android:layout_gravity="center_vertical"
+                        android:textColor="@color/golden"
                         android:text="Silk Board, Bangalore"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
@@ -310,11 +416,11 @@
                 <View
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="3dp"
-                    android:background="@color/colorPrimaryDark"
+                    android:background="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:layout_height=".5dp"/>
             </LinearLayout>
-        </android.support.v7.widget.CardView
             >
     </LinearLayout>
 </ScrollView>
+</LinearLayout>
