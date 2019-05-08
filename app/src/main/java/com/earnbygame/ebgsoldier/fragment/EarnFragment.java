@@ -167,7 +167,7 @@ public class EarnFragment extends Fragment {
     private void shareAll(String shareUrl){
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "CourseKaro");
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "EbgSoldier");
         sendIntent.putExtra(Intent.EXTRA_TEXT, shareUrl);
         sendIntent.setType("text/plain");
         startActivity(sendIntent);

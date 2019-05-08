@@ -36,7 +36,7 @@ public class LiveFragment extends Fragment {
         tContext = getContext();
         tLayoutManager = new LinearLayoutManager(tContext);
         rvLive.setLayoutManager(tLayoutManager);
-        tAdapter = new LiveAdapter();
+        tAdapter = new LiveAdapter(tContext);
         rvLive.setAdapter(tAdapter);
     }
 }
