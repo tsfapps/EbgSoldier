@@ -9,22 +9,17 @@ import com.earnbygame.ebgsoldier.R;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity {
-
+public class RegisterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
     }
-    @OnClick(R.id.tv_login_newRegister)
+    @OnClick(R.id.tv_reg_login)
     public void onNewRegister(){
-        startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-    }
-    @OnClick(R.id.btn_login_submit)
-    public void onLoginSuccess(){
-        startActivity(new Intent(LoginActivity.this, DashActivity.class));
-    }
 
+        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+    }
 }

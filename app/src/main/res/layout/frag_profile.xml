@@ -253,7 +253,7 @@
                 <!--android:id="@+id/tv_profile_phone"-->
                 <!--android:textSize="14dp"-->
                 <!--android:textStyle="bold"-->
-                <!--android:drawableStart="@drawable/ic_pro_phone"-->
+                <!--android:drawableStart="@drawable/ic_golden_phone"-->
                 <!--android:layout_gravity="center_vertical"-->
                 <!--android:text="0987654321"-->
                 <!--android:layout_width="match_parent"-->
@@ -282,7 +282,7 @@
                             android:textColor="@color/golden"
 
                             android:textStyle="bold"
-                            android:drawableStart="@drawable/ic_pro_phone"
+                            android:drawableStart="@drawable/ic_golden_phone"
                             android:layout_gravity="center_vertical"
                             android:text="0987654321"
                             android:layout_width="match_parent"
@@ -347,7 +347,7 @@
                         android:textStyle="bold"
                         android:textColor="@color/golden"
 
-                        android:drawableStart="@drawable/ic_pro_email"
+                        android:drawableStart="@drawable/ic_golden_email"
                         android:layout_gravity="center_vertical"
                         android:text="test@abp.com"
                         android:layout_width="match_parent"
