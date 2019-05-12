@@ -37,7 +37,7 @@ public class JoinFragment extends Fragment {
         tContext = getContext();
         tLayoutManager = new LinearLayoutManager(tContext);
         rvJoin.setLayoutManager(tLayoutManager);
-        tAdapter = new JoinAdapter();
+        tAdapter = new JoinAdapter(getContext());
         rvJoin.setAdapter(tAdapter);
 
     }

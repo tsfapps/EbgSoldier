@@ -187,6 +187,7 @@
                             style="@style/tv_main_bold_bottom"/>
                     </LinearLayout>
                 <Button
+                    android:id="@+id/btn_join"
                     android:layout_marginTop="@dimen/margin_top"
                     android:background="@drawable/bg_btn_main"
                     android:text="Join"
