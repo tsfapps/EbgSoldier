@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
                 <EditText
-                    android:id="@+id/et_login_phone_no"
+                    android:id="@+id/et_user_name"
                     android:drawableStart="@drawable/ic_golden_phone"
                     style="@style/et_login"
                     android:inputType="textPersonName"

@@ -51,24 +51,24 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
     private void initPaymentMethod() {
-        mPaymentService = PaytmPGService.getStagingService(); // TODO For Staging environment:
-        //PaytmPGService Service = PaytmPGService.getProductionService();// TODO for production environment:
+        //mPaymentService = PaytmPGService.getStagingService(); // TODO For Staging environment: test key : LVNRji48342448716443
+        mPaymentService = PaytmPGService.getProductionService();// TODO for production environment: pro key : rsIFPL71143711550832
 
         HashMap<String, String> paramMap = new HashMap<String,String>();
-        paramMap.put( "MID" , "rxazcv89315285244163");
+        paramMap.put( "MID" , "LVNRji48342448716443");
         // Key in your staging and production MID available in your dashboard
         paramMap.put( "ORDER_ID" , "order1");
         paramMap.put( "CUST_ID" , "cust123");
         paramMap.put( "MOBILE_NO" , "7777777777");
         paramMap.put( "EMAIL" , "username@emailprovider.com");
         paramMap.put( "CHANNEL_ID" , "WAP");
-        paramMap.put( "TXN_AMOUNT" , "10");
+        paramMap.put( "TXN_AMOUNT" , "1000");
         paramMap.put( "WEBSITE" , "WEBSTAGING");
         // This is the staging value. Production value is available in your dashboard
         paramMap.put( "INDUSTRY_TYPE_ID" , "Retail");
         // This is the staging value. Production value is available in your dashboard
         paramMap.put( "CALLBACK_URL", "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID=order1");
-        paramMap.put( "CHECKSUMHASH" , "w2QDRMgp1234567JEAPCIOmNgQvsi+BhpqijfM9KvFfRiPmGSt3Ddzw+oTaGCLneJwxFFq5mqTMwJXdQE2EzK4px2xruDqKZjHupz9yXev4=");
+        paramMap.put( "CHECKSUMHASH" , "5VVp9ey9ilYmr7bJhU3iS2FhDHbM/Bg0Fk53agJXNco7Ns1HDlnr1mCR60O8x4YCfI30MQzWh83bfr73gferZQ9eGLIBw+KnRx6IAQnNj14=");
         mOrder = new PaytmOrder(paramMap);
     }
 

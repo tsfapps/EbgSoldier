@@ -24,8 +24,7 @@ import com.earnbygame.ebgsoldier.fragment.ResultFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DashActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class DashActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FragmentManager mFragmentManager;
     @BindView(R.id.toolbar)
     protected Toolbar toolbar;

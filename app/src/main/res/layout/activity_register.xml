@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
                 <EditText
-                    android:id="@+id/et_reg_flatNo"
+                    android:id="@+id/et_reg_user_name"
                     android:drawableStart="@drawable/ic_golden_user"
                     style="@style/et_login"
                     android:inputType="text"
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
                 <EditText
-                    android:id="@+id/et_reg_phoneNo"
+                    android:id="@+id/et_reg_phone_no"
                     android:drawableStart="@drawable/ic_golden_phone"
                     style="@style/et_login"
                     android:inputType="phone"
@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content" >
                     <EditText
                         android:gravity="center_vertical"
-                        android:id="@+id/et_reg_state"
+                        android:id="@+id/et_reg_refer_code"
                         android:drawableStart="@drawable/ic_golden_referral"
                         style="@style/et_login"
                         android:inputType="textPersonName"

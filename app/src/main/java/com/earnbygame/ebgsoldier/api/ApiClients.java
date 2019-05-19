@@ -7,7 +7,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClients {
-    private static final String BASE_URL = "http://chilikaxi.com/knotlink/";
+    private static final String BASE_URL = "http://earnbygame.com/";
     private static Retrofit retrofit;
 
     static Gson gson = new GsonBuilder()
