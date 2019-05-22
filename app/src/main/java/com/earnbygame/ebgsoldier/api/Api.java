@@ -1,5 +1,6 @@
 package com.earnbygame.ebgsoldier.api;
 
+import com.earnbygame.ebgsoldier.model.ModelChecksum;
 import com.earnbygame.ebgsoldier.model.ModelLogin;
 import com.earnbygame.ebgsoldier.model.ModelRegister;
 
@@ -27,6 +28,24 @@ public interface Api {
     Call<ModelLogin> userLogin(
             @Field("pubg_user_name") String pgUserName,
             @Field("password") String password
+    );
+
+    @FormUrlEncoded
+    @POST("api/paytm_app/generateChecksum.php")
+    Call<ModelChecksum> generateCheckSum(
+            @Field("MID") String mid,
+            @Field("ORDER_ID") String orderId,
+            @Field("CUST_ID") String custId,
+            @Field("INDUSTRY_TYPE_ID") String industryId,
+            @Field("CHANNEL_ID") String channelId,
+            @Field("TXN_AMOUNT") String txnAmount,
+            @Field("WEBSITE") String website
+    );
+
+    @FormUrlEncoded
+    @POST("api/paytm_app/verifyChecksum.php")
+    Call<ModelChecksum> verifyCheckSum(
+            @Field("CHECKSUMHASH") String checkSum
     );
 
 }
