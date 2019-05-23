@@ -1,5 +1,6 @@
 package com.earnbygame.ebgsoldier.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -20,6 +21,9 @@ import com.earnbygame.ebgsoldier.fragment.JoinFragment;
 import com.earnbygame.ebgsoldier.fragment.LiveFragment;
 import com.earnbygame.ebgsoldier.fragment.ProfileFragment;
 import com.earnbygame.ebgsoldier.fragment.ResultFragment;
+import com.earnbygame.ebgsoldier.model.User;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +40,10 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
     protected DrawerLayout drawer;
      @BindView(R.id.nav_view)
     protected NavigationView navigationView;
+     @BindView(R.id.tv_walletLabel)
+    protected TextView mWalletMoneyTV;
+    private List<User> mUserList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +56,18 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
         mFragmentManager = getSupportFragmentManager();
+        init();
+    }
+
+    private void init() {
+        mUserList = User.listAll(User.class);
+        if (mUserList.size() > 0){
+            mWalletMoneyTV.setText("₹ "+String.valueOf(mUserList.get(0).getWalletAmount()));
+        }
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.nav_join);
     }
+
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -68,7 +85,7 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
                     mFragmentManager.beginTransaction().replace(R.id.frame_container,new ResultFragment()).commit();
                     return true;
                 case R.id.nav_profile:
-                    mFragmentManager.beginTransaction().replace(R.id.frame_container,new ProfileFragment()).commit();
+                    mFragmentManager.beginTransaction().replace(R.id.frame_container,ProfileFragment.newInstance(mUserList)).commit();
                     return true;
 
             }
@@ -123,11 +140,19 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_logout) {
+            logoutUser();
         }
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logoutUser() {
+        User.deleteAll(User.class);
+        Intent intent = new Intent(this,LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

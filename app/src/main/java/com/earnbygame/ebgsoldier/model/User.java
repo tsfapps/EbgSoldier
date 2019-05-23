@@ -29,34 +29,34 @@ public class User extends SugarRecord {
     private String password;
     @SerializedName("dob")
     @Expose
-    private Object dob;
+    private int dob;
     @SerializedName("referral_code")
     @Expose
     private String referralCode;
     @SerializedName("no_of_referrals")
     @Expose
-    private Object noOfReferrals;
+    private int noOfReferrals;
     @SerializedName("total_added_amount")
     @Expose
-    private Object totalAddedAmount;
+    private int totalAddedAmount;
     @SerializedName("wallet_amount")
     @Expose
-    private Object walletAmount;
+    private int walletAmount;
     @SerializedName("no_of_match_played")
     @Expose
-    private Object noOfMatchPlayed;
+    private int noOfMatchPlayed;
     @SerializedName("total_earned_match")
     @Expose
-    private Object totalEarnedMatch;
+    private int totalEarnedMatch;
     @SerializedName("total_earned_refferals")
     @Expose
-    private Object totalEarnedRefferals;
+    private int totalEarnedRefferals;
     @SerializedName("total_kills")
     @Expose
-    private Object totalKills;
+    private int totalKills;
     @SerializedName("rank")
     @Expose
-    private Object rank;
+    private int rank;
     @SerializedName("pubg_level")
     @Expose
     private String pubgLevel;
@@ -126,11 +126,11 @@ public class User extends SugarRecord {
         this.password = password;
     }
 
-    public Object getDob() {
+    public int getDob() {
         return dob;
     }
 
-    public void setDob(Object dob) {
+    public void setDob(int dob) {
         this.dob = dob;
     }
 
@@ -142,67 +142,67 @@ public class User extends SugarRecord {
         this.referralCode = referralCode;
     }
 
-    public Object getNoOfReferrals() {
+    public int getNoOfReferrals() {
         return noOfReferrals;
     }
 
-    public void setNoOfReferrals(Object noOfReferrals) {
+    public void setNoOfReferrals(int noOfReferrals) {
         this.noOfReferrals = noOfReferrals;
     }
 
-    public Object getTotalAddedAmount() {
+    public int getTotalAddedAmount() {
         return totalAddedAmount;
     }
 
-    public void setTotalAddedAmount(Object totalAddedAmount) {
+    public void setTotalAddedAmount(int totalAddedAmount) {
         this.totalAddedAmount = totalAddedAmount;
     }
 
-    public Object getWalletAmount() {
+    public int getWalletAmount() {
         return walletAmount;
     }
 
-    public void setWalletAmount(Object walletAmount) {
+    public void setWalletAmount(int walletAmount) {
         this.walletAmount = walletAmount;
     }
 
-    public Object getNoOfMatchPlayed() {
+    public int getNoOfMatchPlayed() {
         return noOfMatchPlayed;
     }
 
-    public void setNoOfMatchPlayed(Object noOfMatchPlayed) {
+    public void setNoOfMatchPlayed(int noOfMatchPlayed) {
         this.noOfMatchPlayed = noOfMatchPlayed;
     }
 
-    public Object getTotalEarnedMatch() {
+    public int getTotalEarnedMatch() {
         return totalEarnedMatch;
     }
 
-    public void setTotalEarnedMatch(Object totalEarnedMatch) {
+    public void setTotalEarnedMatch(int totalEarnedMatch) {
         this.totalEarnedMatch = totalEarnedMatch;
     }
 
-    public Object getTotalEarnedRefferals() {
+    public int getTotalEarnedRefferals() {
         return totalEarnedRefferals;
     }
 
-    public void setTotalEarnedRefferals(Object totalEarnedRefferals) {
+    public void setTotalEarnedRefferals(int totalEarnedRefferals) {
         this.totalEarnedRefferals = totalEarnedRefferals;
     }
 
-    public Object getTotalKills() {
+    public int getTotalKills() {
         return totalKills;
     }
 
-    public void setTotalKills(Object totalKills) {
+    public void setTotalKills(int totalKills) {
         this.totalKills = totalKills;
     }
 
-    public Object getRank() {
+    public int getRank() {
         return rank;
     }
 
-    public void setRank(Object rank) {
+    public void setRank(int rank) {
         this.rank = rank;
     }
 

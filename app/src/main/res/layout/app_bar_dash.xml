@@ -45,7 +45,7 @@
                 <TextView
                     android:layout_centerVertical="true"
 
-                    android:id="@+id/tv_walletLabel"
+                    android:id="@+id/tv_wallet"
                     android:text="Wallet Money"
                     android:textColor="@color/grey"
                     android:textSize="10sp"
@@ -55,9 +55,10 @@
                     android:layout_height="wrap_content"
                     tools:ignore="SmallSp" />
                 <TextView
+                    android:id="@+id/tv_walletLabel"
                     android:text="₹ 5500"
                     android:layout_centerVertical="true"
-                    android:layout_below="@+id/tv_walletLabel"
+                    android:layout_below="@+id/tv_wallet"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:textSize="16sp"
