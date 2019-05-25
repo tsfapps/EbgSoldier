@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.earnbygame.ebgsoldier.BuildConfig;
 import com.earnbygame.ebgsoldier.R;
 import com.earnbygame.ebgsoldier.fragment.EarnFragment;
 import com.earnbygame.ebgsoldier.fragment.JoinFragment;
@@ -111,13 +112,12 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_exit) {
+            finish();
+            System.exit(0);
             return true;
         }
 
@@ -131,7 +131,8 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            // Handle the camera action
+            mFragmentManager.beginTransaction().replace(R.id.frame_container,ProfileFragment.newInstance(mUserList)).commit();
+
         } else if (id == R.id.nav_wallet) {
 
         } else if (id == R.id.nav_top_players) {
@@ -139,6 +140,19 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
+
+            try {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "EBG Soldier");
+                String shareMessage= "\nLet me recommend you this application\n\n";
+                shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                startActivity(Intent.createChooser(shareIntent, "choose one"));
+            } catch(Exception e) {
+                //e.toString();
+            }
+
 
         } else if (id == R.id.nav_logout) {
             logoutUser();

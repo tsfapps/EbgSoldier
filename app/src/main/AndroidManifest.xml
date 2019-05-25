@@ -47,6 +47,7 @@
         <activity android:name=".activity.YouTubeActivity" />
         <activity android:name=".activity.RegisterActivity"/>
         <activity android:name=".activity.PaymentActivity"/>
+
     </application>
 
 </manifest>

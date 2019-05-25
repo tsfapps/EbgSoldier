@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     private void onLoginSuccess(){
         if (User.listAll(User.class).size() > 0) {
             startActivity(new Intent(LoginActivity.this, DashActivity.class));
+            finish();
         }
     }
 
