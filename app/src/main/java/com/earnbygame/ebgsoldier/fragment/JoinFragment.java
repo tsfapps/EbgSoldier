@@ -13,12 +13,23 @@ import android.view.ViewGroup;
 
 import com.earnbygame.ebgsoldier.R;
 import com.earnbygame.ebgsoldier.adapter.JoinAdapter;
+import com.earnbygame.ebgsoldier.api.Api;
+import com.earnbygame.ebgsoldier.api.ApiClients;
+import com.earnbygame.ebgsoldier.model.ModelJoinMatch;
+import com.earnbygame.ebgsoldier.utils.Constant;
+import com.earnbygame.ebgsoldier.utils.CustomLog;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class JoinFragment extends Fragment {
 
+    private List<ModelJoinMatch> tModels;
     private RecyclerView.LayoutManager tLayoutManager;
     private JoinAdapter tAdapter;
     private Context tContext;
@@ -37,8 +48,25 @@ public class JoinFragment extends Fragment {
         tContext = getContext();
         tLayoutManager = new LinearLayoutManager(tContext);
         rvJoin.setLayoutManager(tLayoutManager);
-        tAdapter = new JoinAdapter(getContext());
-        rvJoin.setAdapter(tAdapter);
+        callApi();
 
+    }
+
+    private void callApi(){
+        Api api = ApiClients.getApiClients().create(Api.class);
+        Call<List<ModelJoinMatch>> call = api.joinMatch();
+        call.enqueue(new Callback<List<ModelJoinMatch>>() {
+            @Override
+            public void onResponse(Call<List<ModelJoinMatch>> call, Response<List<ModelJoinMatch>> response) {
+                tModels = response.body();
+                tAdapter = new JoinAdapter(getContext(), tModels);
+                rvJoin.setAdapter(tAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<ModelJoinMatch>> call, Throwable t) {
+
+            }
+        });
     }
 }

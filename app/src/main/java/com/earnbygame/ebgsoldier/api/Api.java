@@ -1,8 +1,11 @@
 package com.earnbygame.ebgsoldier.api;
 
 import com.earnbygame.ebgsoldier.model.ModelChecksum;
+import com.earnbygame.ebgsoldier.model.ModelJoinMatch;
 import com.earnbygame.ebgsoldier.model.ModelLogin;
 import com.earnbygame.ebgsoldier.model.ModelRegister;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -28,6 +31,11 @@ public interface Api {
     Call<ModelLogin> userLogin(
             @Field("pubg_user_name") String pgUserName,
             @Field("password") String password
+    );
+//    @FormUrlEncoded
+    @POST("api/api_join_match.php")
+    Call<List<ModelJoinMatch>> joinMatch(
+
     );
 
     @FormUrlEncoded
