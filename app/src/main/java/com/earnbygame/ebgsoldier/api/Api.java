@@ -4,6 +4,8 @@ import com.earnbygame.ebgsoldier.model.ModelChecksum;
 import com.earnbygame.ebgsoldier.model.ModelJoinMatch;
 import com.earnbygame.ebgsoldier.model.ModelLogin;
 import com.earnbygame.ebgsoldier.model.ModelRegister;
+import com.earnbygame.ebgsoldier.model.ModelTransactionHistory;
+import com.earnbygame.ebgsoldier.util.Constant;
 
 import java.util.List;
 
@@ -41,19 +43,35 @@ public interface Api {
     @FormUrlEncoded
     @POST("api/paytm_app/generateChecksum.php")
     Call<ModelChecksum> generateCheckSum(
-            @Field("MID") String mid,
-            @Field("ORDER_ID") String orderId,
-            @Field("CUST_ID") String custId,
-            @Field("INDUSTRY_TYPE_ID") String industryId,
-            @Field("CHANNEL_ID") String channelId,
-            @Field("TXN_AMOUNT") String txnAmount,
-            @Field("WEBSITE") String website
+            @Field(Constant.MID) String mid,
+            @Field(Constant.ORDER_ID) String orderId,
+            @Field(Constant.CUST_ID) String custId,
+            @Field(Constant.INDUSTRY_TYPE_ID) String industryId,
+            @Field(Constant.CHANNEL_ID) String channelId,
+            @Field(Constant.TXN_AMOUNT) String txnAmount,
+            @Field(Constant.WEBSITE) String website,
+            @Field(Constant.EMAIL) String email,
+            @Field(Constant.MOBILE_NO) String mobileNo
     );
 
     @FormUrlEncoded
-    @POST("api/paytm_app/verifyChecksum.php")
-    Call<ModelChecksum> verifyCheckSum(
-            @Field("CHECKSUMHASH") String checkSum
+    @POST("api/api_transaction_history.php")
+    Call<ModelTransactionHistory> paymentTransactionHistory(
+            @Field("status") String status,
+            @Field("checksumhash") String checksumhash,
+            @Field("bankname") String bankname,
+            @Field("orderid") String orderid,
+            @Field("txnamount") String txnamount,
+            @Field("txndate") String txndate,
+            @Field("mid") String mid,
+            @Field("txnid") String txnid,
+            @Field("currency") String currency,
+            @Field("respcode") String respcode,
+            @Field("paymentmode") String paymentmode,
+            @Field("banktxnid") String banktxnid,
+            @Field("gatewayname") String gatewayname,
+            @Field("respmsg") String respmsg,
+            @Field("user_id") String userId
     );
 
 }

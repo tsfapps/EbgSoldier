@@ -1,7 +1,6 @@
 package com.earnbygame.ebgsoldier.activity;
 
 import android.Manifest;
-import android.app.Service;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,18 +10,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.earnbygame.ebgsoldier.R;
 import com.earnbygame.ebgsoldier.api.Api;
 import com.earnbygame.ebgsoldier.api.ApiClients;
 import com.earnbygame.ebgsoldier.model.ModelChecksum;
-import com.earnbygame.ebgsoldier.model.ModelLogin;
+import com.earnbygame.ebgsoldier.model.ModelTransactionHistory;
+import com.earnbygame.ebgsoldier.model.User;
+import com.earnbygame.ebgsoldier.util.Constant;
 import com.paytm.pgsdk.PaytmOrder;
 import com.paytm.pgsdk.PaytmPGService;
 import com.paytm.pgsdk.PaytmPaymentTransactionCallback;
 
 import java.util.HashMap;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +38,19 @@ public class PaymentActivity extends AppCompatActivity {
     private PaytmOrder mOrder;
     private String MID = "rsIFPL71143711550832";//rsIFPL71143711550832//LVNRji48342448716443
     private String mCheckSum = null;
+    private String mCallBackUrl = "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=";
+    //private String mCallBackUrl = "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID=";
+    private String mOrderId = null;
+    private String mCustId = null;
+    private String mAmount = null;
+    private String mIndustryId = null;
+    private String mChannelId = null;
+    private String mWebsite = null;
+    private String mEmail = null;
+    private String mMobile = null;
+    private List<User> mList;
+    private TextView mWalletAmount;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,10 +60,24 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
     private void init() {
-        checkReadSmsPermission();
-
-        //initPaymentMethod();
+        mWalletAmount = findViewById(R.id.wallet_amount);
         mPaymentBtn = findViewById(R.id.btn_payment);
+        checkReadSmsPermission();
+        mList = User.listAll(User.class);
+        if (mList.size() > 0) {
+            mCustId = mList.get(0).getUserId();
+            mEmail = mList.get(0).getEmail();
+            mMobile = mList.get(0).getPhoneNo();
+            String mTemp= mCustId.substring(0, Math.min(mCustId.length(), 6));
+            mOrderId = mTemp + getOrderId();
+            mAmount = "1.00";
+            mIndustryId = "Retail";
+            mChannelId = "WAP";
+            mWebsite = "DEFAULT";
+            mCallBackUrl = "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID="+mOrderId;
+            mWalletAmount.setText("Wallet Amount : ₹ "+mList.get(0).getWalletAmount());
+            Log.d("danny","mTemp:"+mTemp+" orderID: "+mOrderId);
+        }
         mPaymentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,8 +94,8 @@ public class PaymentActivity extends AppCompatActivity {
 
     private void generateChecksumApi() {
         Api api = ApiClients.getApiClients().create(Api.class);
-        Call<ModelChecksum> call = api.generateCheckSum(MID,"order123","cust123","Retail","WAP",
-                "1000","DEFAULT");
+        Call<ModelChecksum> call = api.generateCheckSum(MID, mOrderId,mCustId,mIndustryId,mChannelId,
+                mAmount,mWebsite,mEmail,mMobile);
         call.enqueue(new Callback<ModelChecksum>() {
             @Override
             public void onResponse(Call<ModelChecksum> call, Response<ModelChecksum> response) {
@@ -83,24 +113,20 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
     private void initPaymentMethod() {
-        //mPaymentService = PaytmPGService.getStagingService(); // TODO For Staging environment: test key : LVNRji48342448716443
         mPaymentService = PaytmPGService.getProductionService();// TODO for production environment: pro key : rsIFPL71143711550832
 
         HashMap<String, String> paramMap = new HashMap<String,String>();
-        paramMap.put( "MID" , MID);
-        // Key in your staging and production MID available in your dashboard
-        paramMap.put( "ORDER_ID" , "order123");
-        paramMap.put( "CUST_ID" , "cust123");
-        paramMap.put( "MOBILE_NO" , "7777777777");
-        paramMap.put( "EMAIL" , "username@emailprovider.com");
-        paramMap.put( "CHANNEL_ID" , "WAP");
-        paramMap.put( "TXN_AMOUNT" , "1000");
-        paramMap.put( "WEBSITE" , "DEFAULT");
-        // This is the staging value. Production value is available in your dashboard
-        paramMap.put( "INDUSTRY_TYPE_ID" , "Retail");
-        // This is the staging value. Production value is available in your dashboard
-        paramMap.put( "CALLBACK_URL", "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=order123");
-        paramMap.put( "CHECKSUMHASH" , mCheckSum);
+        paramMap.put(Constant.MID, MID);
+        paramMap.put(Constant.ORDER_ID , mOrderId);
+        paramMap.put( Constant.CUST_ID , mCustId);
+        paramMap.put( Constant.MOBILE_NO , mMobile);
+        paramMap.put( Constant.EMAIL ,mEmail);
+        paramMap.put(Constant.CHANNEL_ID , mChannelId);
+        paramMap.put(Constant.TXN_AMOUNT , mAmount);
+        paramMap.put( Constant.WEBSITE , mWebsite);
+        paramMap.put(Constant.INDUSTRY_TYPE_ID ,mIndustryId);
+        paramMap.put( Constant.CALLBACK_URL, mCallBackUrl);
+        paramMap.put( Constant.CHECKSUMHASH , mCheckSum);
         mOrder = new PaytmOrder(paramMap);
         startPaymentService();
     }
@@ -117,7 +143,11 @@ public class PaymentActivity extends AppCompatActivity {
             public void onTransactionResponse(Bundle inResponse) {
                 /*Display the message as below */
                 Log.d("danny","onTransactionResponse inResponse :"+inResponse.toString());
-                Toast.makeText(getApplicationContext(), "Payment Transaction response " + inResponse.toString(), Toast.LENGTH_LONG).show();
+                if (inResponse.get(Constant.STATUS).equals(Constant.TXN_SUCCESS) && inResponse.get(Constant.RESPMSG).equals(Constant.Txn_Success)) {
+                    callTansactionHistroyApi(inResponse);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Payment Transaction Error occur", Toast.LENGTH_LONG).show();
+                }
             }
             public void networkNotAvailable() {
                 /*Display the message as below */
@@ -139,6 +169,68 @@ public class PaymentActivity extends AppCompatActivity {
             public void onTransactionCancel(String inErrorMessage, Bundle inResponse) {
                 /*Display the message as below */
                 Toast.makeText(getApplicationContext(), "Payment Transaction cancel " + inResponse.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private String getOrderId()
+    {
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "0123456789"
+                + "abcdefghijklmnopqrstuvxyz";
+        StringBuilder sb = new StringBuilder(10);
+
+        for (int i = 0; i < 10; i++) {
+            int index
+                    = (int)(AlphaNumericString.length()
+                    * Math.random());
+            sb.append(AlphaNumericString
+                    .charAt(index));
+        }
+
+        return sb.toString();
+    }
+
+    private void callTansactionHistroyApi(Bundle inResponse) {
+        String status = inResponse.getString("STATUS");
+        String checksum = inResponse.getString("CHECKSUMHASH");
+        String bankName = inResponse.getString("BANKNAME");
+        String orderId = inResponse.getString("ORDERID");
+        String txnAmount = inResponse.getString("TXNAMOUNT");
+        String txnDate = inResponse.getString("TXNDATE");
+        String mid = inResponse.getString("MID");
+        String txnId = inResponse.getString("TXNID");
+        String respcode = inResponse.getString("RESPCODE");
+        String paymentMode = inResponse.getString("PAYMENTMODE");
+        String banktxnid = inResponse.getString("BANKTXNID");
+        String currency = inResponse.getString("CURRENCY");
+        String gatewayname = inResponse.getString("GATEWAYNAME");
+        String respmsg = inResponse.getString("RESPMSG");
+        Log.d("danny","callTransactionHistoryApi send data :"+ inResponse.toString());
+
+        Api api = ApiClients.getApiClients().create(Api.class);
+        Call<ModelTransactionHistory> call = api.paymentTransactionHistory(status, checksum, bankName, orderId, txnAmount, txnDate, mid,
+                txnId, respcode, paymentMode, banktxnid, currency, gatewayname, respmsg, mCustId);
+        call.enqueue(new Callback<ModelTransactionHistory>() {
+            @Override
+            public void onResponse(Call<ModelTransactionHistory> call, Response<ModelTransactionHistory> response) {
+                assert response.body() != null;
+                Log.d("danny","callTransactionHistoryApi onResonse :"+response.body().toString());
+                if (!response.body().getError()){
+                    Toast.makeText(getApplicationContext(), "Payment Transaction Successfully done", Toast.LENGTH_LONG).show();
+                    Log.d("danny","callTransactionHistoryApi onResonse success ,, previous wallet amount :"+mList.get(0).getWalletAmount());
+                    User user= mList.get(0);
+                     user.setWalletAmount(response.body().getWallet());
+                     user.save();
+                     int wallet = User.listAll(User.class).get(0).getWalletAmount();
+                     Log.d("danny","callTransactionHistoryApi onResonse success ,, current wallet amount :"+wallet);
+                    mWalletAmount.setText("Wallet Amount : ₹ "+String.valueOf(wallet));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ModelTransactionHistory> call, Throwable t) {
+
             }
         });
     }
