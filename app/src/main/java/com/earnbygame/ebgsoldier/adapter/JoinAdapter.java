@@ -42,7 +42,7 @@ public class JoinAdapter extends RecyclerView.Adapter<JoinAdapter.JoinViewHolder
     @Override
     public void onBindViewHolder(@NonNull final JoinViewHolder joinViewHolder, int i) {
 
-        ModelJoinMatch tModel = tModels.get(i);
+        final ModelJoinMatch tModel = tModels.get(i);
         joinViewHolder.tv_matchJoin_gameName.setText(tModel.getMatchName());
         joinViewHolder.tv_matchJoin_date.setText("Date : "+tModel.getMatchDate());
         joinViewHolder.tv_matchJoin_time.setText("Time : "+tModel.getMatchTime());
@@ -65,6 +65,8 @@ public class JoinAdapter extends RecyclerView.Adapter<JoinAdapter.JoinViewHolder
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(mContext, PaymentActivity.class);
+                i.putExtra("match_id",tModel.getMatchId());
+                i.putExtra("entry_fee",tModel.getEntryFee());
                 mContext.startActivity(i);
 
             }

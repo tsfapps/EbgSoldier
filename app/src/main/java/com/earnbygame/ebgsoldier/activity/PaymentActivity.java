@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +51,12 @@ public class PaymentActivity extends AppCompatActivity {
     private String mEmail = null;
     private String mMobile = null;
     private List<User> mList;
-    private TextView mWalletAmount;
+    private TextView mWalletAmountTV;
+    private String mMatchId;
+    private int mEntryFee;
+    private TextView mJoinAmountTV;
+    private EditText mFeeAmountET;
+    private ImageView mBackBtn;
 
 
     @Override
@@ -60,9 +67,25 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
     private void init() {
-        mWalletAmount = findViewById(R.id.wallet_amount);
+        mWalletAmountTV = findViewById(R.id.wallet_amount);
+        mJoinAmountTV = findViewById(R.id.join_amount);
+        mFeeAmountET = findViewById(R.id.et_fee_amount);
         mPaymentBtn = findViewById(R.id.btn_payment);
+        mBackBtn = findViewById(R.id.iv_back);
         checkReadSmsPermission();
+        mMatchId = getIntent().getStringExtra("match_id");
+        try {
+            mEntryFee = Integer.parseInt(getIntent().getStringExtra("entry_fee"));
+            Log.d("danny", "PaymentActivity init called,, mMatchId :" + mMatchId + " entryFee :" + mEntryFee);
+        } catch (NumberFormatException e){
+            if (getIntent().getStringExtra("entry_fee").equalsIgnoreCase("Free")) {
+                mEntryFee = 0;
+            } else {
+                e.printStackTrace();
+                Toast.makeText(this, "Entry Fees is not correct !", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        }
         mList = User.listAll(User.class);
         if (mList.size() > 0) {
             mCustId = mList.get(0).getUserId();
@@ -70,20 +93,44 @@ public class PaymentActivity extends AppCompatActivity {
             mMobile = mList.get(0).getPhoneNo();
             String mTemp= mCustId.substring(0, Math.min(mCustId.length(), 6));
             mOrderId = mTemp + getOrderId();
-            mAmount = "1.00";
             mIndustryId = "Retail";
             mChannelId = "WAP";
             mWebsite = "DEFAULT";
             mCallBackUrl = "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID="+mOrderId;
-            mWalletAmount.setText("Wallet Amount : ₹ "+mList.get(0).getWalletAmount());
-            Log.d("danny","mTemp:"+mTemp+" orderID: "+mOrderId);
+            updateWalletAmount();
         }
         mPaymentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("danny","onStartPayment amount to pay : "+mAmount);
                 generateChecksumApi();
             }
         });
+
+        mBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+    }
+
+    private void updateWalletAmount() {
+        mList.clear();
+        mList = User.listAll(User.class);
+        int wallet = mList.get(0).getWalletAmount();
+        mWalletAmountTV.setText(String.valueOf(wallet));
+        mJoinAmountTV.setText(String.valueOf(mEntryFee));
+        if (mEntryFee > wallet){
+            mFeeAmountET.setVisibility(View.VISIBLE);
+            mAmount = String.valueOf(mEntryFee - wallet);
+            mFeeAmountET.setText("₹ "+ mAmount);
+            mPaymentBtn.setText("Add");
+        } else {
+            mAmount = String.valueOf(mEntryFee);
+            mFeeAmountET.setVisibility(View.GONE);
+            mPaymentBtn.setText("Join");
+        }
     }
 
     private void checkReadSmsPermission() {
@@ -217,14 +264,13 @@ public class PaymentActivity extends AppCompatActivity {
                 assert response.body() != null;
                 Log.d("danny","callTransactionHistoryApi onResonse :"+response.body().toString());
                 if (!response.body().getError()){
-                    Toast.makeText(getApplicationContext(), "Payment Transaction Successfully done", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Amount added in wallet successfully", Toast.LENGTH_LONG).show();
                     Log.d("danny","callTransactionHistoryApi onResonse success ,, previous wallet amount :"+mList.get(0).getWalletAmount());
                     User user= mList.get(0);
                      user.setWalletAmount(response.body().getWallet());
                      user.save();
-                     int wallet = User.listAll(User.class).get(0).getWalletAmount();
-                     Log.d("danny","callTransactionHistoryApi onResonse success ,, current wallet amount :"+wallet);
-                    mWalletAmount.setText("Wallet Amount : ₹ "+String.valueOf(wallet));
+                     Log.d("danny","callTransactionHistoryApi onResonse success ,, current wallet amount :"+response.body().getWallet());
+                     updateWalletAmount();
                 }
             }
 
