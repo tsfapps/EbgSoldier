@@ -103,7 +103,13 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("danny","onStartPayment amount to pay : "+mAmount);
-                generateChecksumApi();
+                if (mAmount != null) {
+                    if (mPaymentBtn.getText().toString().equalsIgnoreCase("Add")) {
+                        generateChecksumApi();
+                    } else {
+                        callAmountDeductionApi();
+                    }
+                }
             }
         });
 
@@ -114,6 +120,7 @@ public class PaymentActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void updateWalletAmount() {
         mList.clear();
@@ -271,6 +278,33 @@ public class PaymentActivity extends AppCompatActivity {
                      user.save();
                      Log.d("danny","callTransactionHistoryApi onResonse success ,, current wallet amount :"+response.body().getWallet());
                      updateWalletAmount();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ModelTransactionHistory> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void callAmountDeductionApi() {
+
+        Api api = ApiClients.getApiClients().create(Api.class);
+        Call<ModelTransactionHistory> call = api.amountDeductionApi(mMatchId, mAmount, mCustId);
+        call.enqueue(new Callback<ModelTransactionHistory>() {
+            @Override
+            public void onResponse(Call<ModelTransactionHistory> call, Response<ModelTransactionHistory> response) {
+                assert response.body() != null;
+                Log.d("danny","callTransactionHistoryApi onResonse :"+response.body().toString());
+                if (!response.body().getError()){
+                    Toast.makeText(getApplicationContext(), "Game joined successfully", Toast.LENGTH_LONG).show();
+                    Log.d("danny","callTransactionHistoryApi onResonse success ,, previous wallet amount :"+mList.get(0).getWalletAmount());
+                    User user= mList.get(0);
+                    user.setWalletAmount(response.body().getWallet());
+                    user.save();
+                    Log.d("danny","callTransactionHistoryApi onResonse success ,, current wallet amount :"+response.body().getWallet());
+                    finish();
                 }
             }
 

@@ -74,4 +74,12 @@ public interface Api {
             @Field("user_id") String userId
     );
 
+    @FormUrlEncoded
+    @POST("api/api_deduction.php")
+    Call<ModelTransactionHistory> amountDeductionApi(
+            @Field("match_id") String matchId,
+            @Field("txnamount") String txnAmount,
+            @Field("user_id") String userId
+    );
+
 }
