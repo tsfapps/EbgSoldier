@@ -1,6 +1,7 @@
 package com.earnbygame.ebgsoldier.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -57,6 +58,7 @@ public class PaymentActivity extends AppCompatActivity {
     private TextView mJoinAmountTV;
     private EditText mFeeAmountET;
     private ImageView mBackBtn;
+    private String mMatchName;
 
 
     @Override
@@ -74,6 +76,7 @@ public class PaymentActivity extends AppCompatActivity {
         mBackBtn = findViewById(R.id.iv_back);
         checkReadSmsPermission();
         mMatchId = getIntent().getStringExtra("match_id");
+        mMatchName = getIntent().getStringExtra("match_name");
         try {
             mEntryFee = Integer.parseInt(getIntent().getStringExtra("entry_fee"));
             Log.d("danny", "PaymentActivity init called,, mMatchId :" + mMatchId + " entryFee :" + mEntryFee);
@@ -304,6 +307,11 @@ public class PaymentActivity extends AppCompatActivity {
                     user.setWalletAmount(response.body().getWallet());
                     user.save();
                     Log.d("danny","callTransactionHistoryApi onResonse success ,, current wallet amount :"+response.body().getWallet());
+                    Intent intent = new Intent(PaymentActivity.this, MatchDetailActivity.class);
+                    intent.putExtra("match_id",mMatchId);
+                    intent.putExtra("match_name",mMatchName);
+                    intent.putExtra("join_status","1");
+                    startActivity(intent);
                     finish();
                 }
             }

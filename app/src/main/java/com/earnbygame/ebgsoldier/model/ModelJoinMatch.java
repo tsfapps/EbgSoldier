@@ -82,6 +82,9 @@ public class ModelJoinMatch {
     @SerializedName("match_icon")
     @Expose
     private String matchIcon;
+    @SerializedName("joined_status")
+    @Expose
+    private String joinedStatus;
 
     public String getId() {
         return id;
@@ -291,4 +294,11 @@ public class ModelJoinMatch {
         this.matchIcon = matchIcon;
     }
 
+    public String getJoinedStatus() {
+        return joinedStatus;
+    }
+
+    public void setJoinedStatus(String joinedStatus) {
+        this.joinedStatus = joinedStatus;
+    }
 }

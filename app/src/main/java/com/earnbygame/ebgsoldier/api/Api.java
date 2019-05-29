@@ -34,10 +34,10 @@ public interface Api {
             @Field("pubg_user_name") String pgUserName,
             @Field("password") String password
     );
-//    @FormUrlEncoded
+    @FormUrlEncoded
     @POST("api/api_join_match.php")
     Call<List<ModelJoinMatch>> joinMatch(
-
+            @Field("user_id") String userId
     );
 
     @FormUrlEncoded

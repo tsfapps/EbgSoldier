@@ -10,9 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.earnbygame.ebgsoldier.R;
+import com.earnbygame.ebgsoldier.activity.MatchDetailActivity;
 import com.earnbygame.ebgsoldier.activity.PaymentActivity;
 import com.earnbygame.ebgsoldier.model.ModelJoinMatch;
 
@@ -59,16 +61,37 @@ public class JoinAdapter extends RecyclerView.Adapter<JoinAdapter.JoinViewHolder
         joinViewHolder.tv_matchJoin_joinedCount.setText(tModel.getTotalJoined());
         joinViewHolder.tv_matchJoin_remainCount.setText(tModel.getRemainToJoin());
 
+        if (tModel.getJoinedStatus().equals("1")){
+            joinViewHolder.mJoinBtn.setText("Joined");
+            joinViewHolder.mJoinBtn.setEnabled(false);
+        } else {
+            joinViewHolder.mJoinBtn.setText("Join");
+            joinViewHolder.mJoinBtn.setEnabled(true);
+        }
 
 
         joinViewHolder.mJoinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(mContext, PaymentActivity.class);
-                i.putExtra("match_id",tModel.getMatchId());
-                i.putExtra("entry_fee",tModel.getEntryFee());
-                mContext.startActivity(i);
+                if (tModel.getJoinedStatus().equals("0")) {
+                    Intent i = new Intent(mContext, PaymentActivity.class);
+                    i.putExtra("match_id", tModel.getMatchId());
+                    i.putExtra("match_name", tModel.getMatchName());
+                    i.putExtra("entry_fee", tModel.getEntryFee());
+                    mContext.startActivity(i);
+                }
 
+            }
+        });
+
+        joinViewHolder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(mContext, MatchDetailActivity.class);
+                i.putExtra("match_id",tModel.getMatchId());
+                i.putExtra("match_name",tModel.getMatchName());
+                i.putExtra("join_status",tModel.getJoinedStatus());
+                mContext.startActivity(i);
             }
         });
     }
@@ -113,6 +136,8 @@ public class JoinAdapter extends RecyclerView.Adapter<JoinAdapter.JoinViewHolder
         protected TextView tv_matchJoin_joinedCount;
 @BindView(R.id.tv_matchJoin_remainCount)
         protected TextView tv_matchJoin_remainCount;
+@BindView(R.id.main_ll)
+        protected LinearLayout mainLayout;
 
         public JoinViewHolder(@NonNull View itemView) {
             super(itemView);
