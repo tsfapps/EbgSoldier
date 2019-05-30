@@ -3,6 +3,8 @@ package com.earnbygame.ebgsoldier.api;
 import com.earnbygame.ebgsoldier.model.ModelChecksum;
 import com.earnbygame.ebgsoldier.model.ModelJoinMatch;
 import com.earnbygame.ebgsoldier.model.ModelLogin;
+import com.earnbygame.ebgsoldier.model.ModelMatchDetail;
+import com.earnbygame.ebgsoldier.model.ModelMatchUserJoined;
 import com.earnbygame.ebgsoldier.model.ModelRegister;
 import com.earnbygame.ebgsoldier.model.ModelTransactionHistory;
 import com.earnbygame.ebgsoldier.util.Constant;
@@ -80,6 +82,18 @@ public interface Api {
             @Field("match_id") String matchId,
             @Field("txnamount") String txnAmount,
             @Field("user_id") String userId
+    );
+
+    @FormUrlEncoded
+    @POST("api/api_match_details.php")
+    Call<ModelMatchDetail> matchDetailApi(
+            @Field("match_id") String matchId
+    );
+
+    @FormUrlEncoded
+    @POST("api/api_joined_users.php")
+    Call<ModelMatchUserJoined> matchUserJoined(
+            @Field("match_id") String matchId
     );
 
 }

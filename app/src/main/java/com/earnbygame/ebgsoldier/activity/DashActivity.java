@@ -60,11 +60,16 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
         init();
     }
 
-    private void init() {
+    @Override
+    protected void onResume() {
+        super.onResume();
         mUserList = User.listAll(User.class);
         if (mUserList.size() > 0){
             mWalletMoneyTV.setText("₹ "+String.valueOf(mUserList.get(0).getWalletAmount()));
         }
+    }
+
+    private void init() {
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.nav_join);
     }

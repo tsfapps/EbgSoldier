@@ -56,7 +56,6 @@ public class JoinFragment extends Fragment {
         }
         tLayoutManager = new LinearLayoutManager(tContext);
         rvJoin.setLayoutManager(tLayoutManager);
-        callApi();
 
     }
 
@@ -76,5 +75,11 @@ public class JoinFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        callApi();
     }
 }
