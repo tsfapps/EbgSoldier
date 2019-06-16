@@ -1,6 +1,7 @@
 package com.earnbygame.ebgsoldier.fragment;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -62,6 +63,8 @@ public class WalletFragment extends Fragment {
     private FragmentManager fragmentManager;
     private DashActivity tActivity;
     private String strWalletAmount;
+    private String strEarnedAmount;
+    private String strBonusAmount;
     private List<User> mUserList;
 
 
@@ -70,6 +73,10 @@ public class WalletFragment extends Fragment {
 
     @BindView(R.id.tv_wallet_amount)
     protected TextView tv_wallet_amount;
+    @BindView(R.id.tv_earned_amount)
+    protected TextView tv_earned_amount;
+    @BindView(R.id.tv_bonus_amount)
+    protected TextView tv_bonus_amount;
     @BindView(R.id.et_adding_amount)
     protected EditText et_adding_amount;
     @BindView(R.id.tv_wallet100)
@@ -92,6 +99,7 @@ public class WalletFragment extends Fragment {
         return view;
     }
 
+    @SuppressLint("SetTextI18n")
     private void initFrag(){
         tContext = getContext();
         tActivity = (DashActivity) getActivity();
@@ -100,11 +108,15 @@ public class WalletFragment extends Fragment {
         mUserList = User.listAll(User.class);
         if (mUserList.size() > 0){
             strWalletAmount = mUserList.get(0).getWalletAmount();
+            strEarnedAmount = mUserList.get(0).getTotalEarnedMatch();
+            strBonusAmount = mUserList.get(0).getTotalEarnedRefferals();
             mCustId =mUserList.get(0).getUserId();
             mEmail = mUserList.get(0).getEmail();
             mMobile = mUserList.get(0).getPhoneNo();
         }
         tv_wallet_amount.setText(strWalletAmount);
+        tv_earned_amount.setText(strEarnedAmount);
+        tv_bonus_amount.setText(strBonusAmount);
         checkReadSmsPermission();
 
         String mTemp= mCustId.substring(0, Math.min(mCustId.length(), 6));

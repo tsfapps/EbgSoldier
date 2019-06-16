@@ -47,10 +47,10 @@ public class User extends SugarRecord {
     private int noOfMatchPlayed;
     @SerializedName("total_earned_match")
     @Expose
-    private int totalEarnedMatch;
+    private String totalEarnedMatch;
     @SerializedName("total_earned_refferals")
     @Expose
-    private int totalEarnedRefferals;
+    private String totalEarnedRefferals;
     @SerializedName("total_kills")
     @Expose
     private int totalKills;
@@ -174,19 +174,19 @@ public class User extends SugarRecord {
         this.noOfMatchPlayed = noOfMatchPlayed;
     }
 
-    public int getTotalEarnedMatch() {
+    public String getTotalEarnedMatch() {
         return totalEarnedMatch;
     }
 
-    public void setTotalEarnedMatch(int totalEarnedMatch) {
+    public void setTotalEarnedMatch(String totalEarnedMatch) {
         this.totalEarnedMatch = totalEarnedMatch;
     }
 
-    public int getTotalEarnedRefferals() {
+    public String getTotalEarnedRefferals() {
         return totalEarnedRefferals;
     }
 
-    public void setTotalEarnedRefferals(int totalEarnedRefferals) {
+    public void setTotalEarnedRefferals(String totalEarnedRefferals) {
         this.totalEarnedRefferals = totalEarnedRefferals;
     }
 
