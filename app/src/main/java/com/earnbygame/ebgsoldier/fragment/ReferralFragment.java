@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.earnbygame.ebgsoldier.R;
 import com.earnbygame.ebgsoldier.activity.DashActivity;
+import com.earnbygame.ebgsoldier.model.login.User;
 
 import java.util.List;
 
@@ -26,19 +27,20 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class EarnFragment extends Fragment {
+public class ReferralFragment extends Fragment {
 
     private View viewLayout;
     private DashActivity activity;
     private FragmentManager fragmentManager;
     private Context context;
+    private List<User> mUserList;
+    private String strRefCode;
+    private String strWalletAmount;
 
-    @BindView(R.id.tv_point)
-    public TextView mPoints;
+    @BindView(R.id.tv_walletAmount)
+    public TextView tWalletAmount;
     @BindView(R.id.tv_ref_code)
     public TextView mRefCode;
-    @BindView(R.id.tv_ref_code_below)
-    public TextView mRefCodeBelow;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,16 +50,23 @@ public class EarnFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewLayout = inflater.inflate(R.layout.frag_earn, container, false);
+        viewLayout = inflater.inflate(R.layout.frag_referreal, container, false);
         ButterKnife.bind(this, viewLayout);
-        activity = (DashActivity) getActivity();
-        fragmentManager = activity.getSupportFragmentManager();
-
-        mPoints.setText("₹ 0");
-        mRefCode.setText("DAN6CS");
-        mRefCodeBelow.setText("DAN6CS");
-
+        initFrag();
         return viewLayout;
+    }
+
+    private void initFrag(){
+        activity = (DashActivity) getActivity();
+        assert activity != null;
+        fragmentManager = activity.getSupportFragmentManager();
+        mUserList = User.listAll(User.class);
+        if (mUserList.size() > 0){
+            strRefCode = mUserList.get(0).getReferralCode();
+            strWalletAmount = mUserList.get(0).getWalletAmount();
+        }
+        tWalletAmount.setText("₹ "+strWalletAmount);
+        mRefCode.setText(strRefCode);
     }
 
     @Override
@@ -100,16 +109,19 @@ public class EarnFragment extends Fragment {
 
     @OnClick({R.id.iv_fb,R.id.iv_whatsApp,R.id.iv_more})
     public void onClick(View v) {
+        String strMessage = "Install ebgsoldier and register by using my mentioned referal code to earn wallet amount. My referral code is : ";
+        String strLink = ".\nDownload the App by this link "+"http://play.google.com/store/apps/details?id=" + activity.getPackageName();
         try {
             switch (v.getId()) {
                 case R.id.iv_fb:
-                    shareWithFb(mRefCode.getText().toString());
+
+                    shareWithFb(strMessage+mRefCode.getText().toString()+strLink);
                     break;
                 case R.id.iv_whatsApp:
-                    shareWithWhatsApp(mRefCode.getText().toString());
+                    shareWithWhatsApp(strMessage+mRefCode.getText().toString()+strLink);
                     break;
                 case R.id.iv_more:
-                    shareAll(mRefCode.getText().toString());
+                    shareAll(strMessage+mRefCode.getText().toString()+strLink);
                     break;
             }
         } catch (Exception e) {

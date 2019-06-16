@@ -1,5 +1,6 @@
-package com.earnbygame.ebgsoldier.model;
+package com.earnbygame.ebgsoldier.model.login;
 
+import com.earnbygame.ebgsoldier.model.login.User;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

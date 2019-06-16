@@ -1,4 +1,4 @@
-package com.earnbygame.ebgsoldier.model;
+package com.earnbygame.ebgsoldier.model.login;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -41,7 +41,7 @@ public class User extends SugarRecord {
     private int totalAddedAmount;
     @SerializedName("wallet_amount")
     @Expose
-    private int walletAmount;
+    private String walletAmount;
     @SerializedName("no_of_match_played")
     @Expose
     private int noOfMatchPlayed;
@@ -158,11 +158,11 @@ public class User extends SugarRecord {
         this.totalAddedAmount = totalAddedAmount;
     }
 
-    public int getWalletAmount() {
+    public String getWalletAmount() {
         return walletAmount;
     }
 
-    public void setWalletAmount(int walletAmount) {
+    public void setWalletAmount(String walletAmount) {
         this.walletAmount = walletAmount;
     }
 

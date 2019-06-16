@@ -21,8 +21,8 @@ import com.earnbygame.ebgsoldier.api.Api;
 import com.earnbygame.ebgsoldier.api.ApiClients;
 import com.earnbygame.ebgsoldier.model.ModelChecksum;
 import com.earnbygame.ebgsoldier.model.ModelTransactionHistory;
-import com.earnbygame.ebgsoldier.model.User;
-import com.earnbygame.ebgsoldier.util.Constant;
+import com.earnbygame.ebgsoldier.model.login.User;
+import com.earnbygame.ebgsoldier.utils.Constant;
 import com.paytm.pgsdk.PaytmOrder;
 import com.paytm.pgsdk.PaytmPGService;
 import com.paytm.pgsdk.PaytmPaymentTransactionCallback;
@@ -128,7 +128,7 @@ public class PaymentActivity extends AppCompatActivity {
     private void updateWalletAmount() {
         mList.clear();
         mList = User.listAll(User.class);
-        int wallet = mList.get(0).getWalletAmount();
+        int wallet = Integer.parseInt(mList.get(0).getWalletAmount());
         mWalletAmountTV.setText(String.valueOf(wallet));
         mJoinAmountTV.setText(String.valueOf(mEntryFee));
         if (mEntryFee > wallet){
@@ -277,7 +277,7 @@ public class PaymentActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Amount added in wallet successfully", Toast.LENGTH_LONG).show();
                     Log.d("danny","callTransactionHistoryApi onResonse success ,, previous wallet amount :"+mList.get(0).getWalletAmount());
                     User user= mList.get(0);
-                     user.setWalletAmount(response.body().getWallet());
+                     user.setWalletAmount(String.valueOf(response.body().getWallet()));
                      user.save();
                      Log.d("danny","callTransactionHistoryApi onResonse success ,, current wallet amount :"+response.body().getWallet());
                      updateWalletAmount();
@@ -304,7 +304,7 @@ public class PaymentActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Game joined successfully", Toast.LENGTH_LONG).show();
                     Log.d("danny","callTransactionHistoryApi onResonse success ,, previous wallet amount :"+mList.get(0).getWalletAmount());
                     User user= mList.get(0);
-                    user.setWalletAmount(response.body().getWallet());
+                    user.setWalletAmount(String.valueOf(response.body().getWallet()));
                     user.save();
                     Log.d("danny","callTransactionHistoryApi onResonse success ,, current wallet amount :"+response.body().getWallet());
                     Intent intent = new Intent(PaymentActivity.this, MatchDetailActivity.class);

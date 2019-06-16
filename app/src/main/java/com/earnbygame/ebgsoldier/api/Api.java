@@ -2,12 +2,12 @@ package com.earnbygame.ebgsoldier.api;
 
 import com.earnbygame.ebgsoldier.model.ModelChecksum;
 import com.earnbygame.ebgsoldier.model.ModelJoinMatch;
-import com.earnbygame.ebgsoldier.model.ModelLogin;
+import com.earnbygame.ebgsoldier.model.login.ModelLogin;
 import com.earnbygame.ebgsoldier.model.ModelMatchDetail;
 import com.earnbygame.ebgsoldier.model.ModelMatchUserJoined;
 import com.earnbygame.ebgsoldier.model.ModelRegister;
 import com.earnbygame.ebgsoldier.model.ModelTransactionHistory;
-import com.earnbygame.ebgsoldier.util.Constant;
+import com.earnbygame.ebgsoldier.utils.Constant;
 
 import java.util.List;
 
@@ -55,7 +55,6 @@ public interface Api {
             @Field(Constant.EMAIL) String email,
             @Field(Constant.MOBILE_NO) String mobileNo
     );
-
     @FormUrlEncoded
     @POST("api/api_transaction_history.php")
     Call<ModelTransactionHistory> paymentTransactionHistory(
@@ -75,9 +74,8 @@ public interface Api {
             @Field("respmsg") String respmsg,
             @Field("user_id") String userId
     );
-
     @FormUrlEncoded
-    @POST("api/api_deduction.php")
+    @POST("api/api_deduction.php" )
     Call<ModelTransactionHistory> amountDeductionApi(
             @Field("match_id") String matchId,
             @Field("txnamount") String txnAmount,

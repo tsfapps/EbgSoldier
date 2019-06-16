@@ -5,7 +5,7 @@ import android.util.Log;
 import com.earnbygame.ebgsoldier.activity.LoginActivity;
 import com.earnbygame.ebgsoldier.api.Api;
 import com.earnbygame.ebgsoldier.api.ApiClients;
-import com.earnbygame.ebgsoldier.model.ModelLogin;
+import com.earnbygame.ebgsoldier.model.login.ModelLogin;
 
 import retrofit2.Call;
 import retrofit2.Callback;

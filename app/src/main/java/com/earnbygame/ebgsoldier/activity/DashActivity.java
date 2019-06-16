@@ -1,5 +1,6 @@
 package com.earnbygame.ebgsoldier.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,21 +14,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.earnbygame.ebgsoldier.BuildConfig;
 import com.earnbygame.ebgsoldier.R;
-import com.earnbygame.ebgsoldier.fragment.EarnFragment;
+import com.earnbygame.ebgsoldier.fragment.ReferralFragment;
 import com.earnbygame.ebgsoldier.fragment.JoinFragment;
 import com.earnbygame.ebgsoldier.fragment.LiveFragment;
 import com.earnbygame.ebgsoldier.fragment.ProfileFragment;
 import com.earnbygame.ebgsoldier.fragment.ResultFragment;
-import com.earnbygame.ebgsoldier.model.User;
+import com.earnbygame.ebgsoldier.fragment.WalletFragment;
+import com.earnbygame.ebgsoldier.model.login.User;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class DashActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FragmentManager mFragmentManager;
@@ -42,7 +46,7 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
      @BindView(R.id.nav_view)
     protected NavigationView navigationView;
      @BindView(R.id.tv_walletLabel)
-    protected TextView mWalletMoneyTV;
+    protected TextView tv_walletLabel;
     private List<User> mUserList;
 
     @Override
@@ -60,15 +64,21 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
         init();
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onResume() {
         super.onResume();
         mUserList = User.listAll(User.class);
         if (mUserList.size() > 0){
-            mWalletMoneyTV.setText("₹ "+String.valueOf(mUserList.get(0).getWalletAmount()));
+            tv_walletLabel.setText("₹ "+mUserList.get(0).getWalletAmount());
         }
     }
 
+    @OnClick(R.id.tv_walletLabel)
+    public void tv_walletLabelClicked(View view){
+        mFragmentManager.beginTransaction().replace(R.id.frame_container,new WalletFragment()).addToBackStack(null).commit();
+
+    }
     private void init() {
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.nav_join);
@@ -79,7 +89,7 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             switch (menuItem.getItemId()){
                 case R.id.nav_ref_earn:
-                    mFragmentManager.beginTransaction().replace(R.id.frame_container,new EarnFragment()).commit();
+                    mFragmentManager.beginTransaction().replace(R.id.frame_container,new ReferralFragment()).commit();
                     return true;
                 case R.id.nav_live:
                     mFragmentManager.beginTransaction().replace(R.id.frame_container,new LiveFragment()).commit();

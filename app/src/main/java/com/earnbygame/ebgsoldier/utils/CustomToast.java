@@ -11,6 +11,17 @@ public class CustomToast {
         this.tCtx = tCtx;
     }
 
+    public static void tToastTop(Context tCtx, String message){
+        Toast toast = Toast.makeText( tCtx, message, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP, Constant.xOffSet, Constant.yOffSet);
+        toast.show();
+    }
+    public static void tToastBottom(Context tCtx, String message){
+        Toast toast = Toast.makeText( tCtx, message, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.BOTTOM, Constant.xOffSet, Constant.yOffSet);
+        toast.show();
+    }
+
     public static void tToast(Context tCtx, String message){
         Toast toast = Toast.makeText( tCtx, message, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP, Constant.xOffSet, Constant.yOffSet);

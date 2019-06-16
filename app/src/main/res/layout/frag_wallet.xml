@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main_front"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <ImageView
+            android:layout_marginStart="16dp"
+            android:id="@+id/iv_wallet_add"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_wallet" />
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/white"
+            android:id="@+id/wallet_amount_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wallet Amount : ₹ "
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/iv_wallet_add" />
+        <TextView
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/tv_wallet_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/wallet_amount_txt" />
+    </LinearLayout>
+
+        <EditText
+            android:layout_below="@id/iv_wallet_add"
+            android:enabled="false"
+            android:inputType="number"
+            android:textColorHint="@color/white"
+            android:background="@drawable/bg_et_disabled"
+            android:id="@+id/et_adding_amount"
+           style="@style/et_login"
+            android:layout_margin="24dp"
+            android:hint="Enter the amount"
+            android:gravity="center"
+            android:focusable="true"/>
+    <LinearLayout
+        android:id="@+id/ll_adding_amountLayout"
+        android:layout_margin="@dimen/margin_top"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:id="@+id/tv_wallet100"
+            android:gravity="center"
+           style="@style/et_login"
+            android:text="100 "
+            android:textSize="18sp"
+            android:textStyle="bold"
+             />
+        <TextView
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:id="@+id/tv_wallet200"
+            android:gravity="center"
+           style="@style/et_login"
+            android:text="200 "
+            android:textSize="18sp"
+            android:textStyle="bold"
+             />
+        <TextView
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:id="@+id/tv_wallet500"
+            android:gravity="center"
+           style="@style/et_login"
+            android:text="500 "
+            android:textSize="18sp"
+            android:textStyle="bold"
+             />
+        <TextView
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:id="@+id/tv_walletCustom"
+            android:gravity="center"
+           style="@style/et_login"
+            android:text="Custom "
+            android:textSize="18sp"
+            android:textStyle="bold"
+             />
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/btn_addAmount"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Add money to wallet"
+            android:textAllCaps="false"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/ll_adding_amountLayout"
+            android:layout_margin="24dp"/>
+
+</LinearLayout>

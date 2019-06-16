@@ -2,38 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
-
+    android:background="@drawable/bg_main_front">
     <android.support.v4.widget.NestedScrollView
+        android:background="@drawable/bg_simple_transparent"
+        android:layout_marginEnd="@dimen/margin_top"
+        android:layout_marginStart="@dimen/margin_top"
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="wrap_content">
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <RelativeLayout
+                android:layout_centerHorizontal="true"
                 android:id="@+id/rl_points"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardUseCompatPadding="false"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="0dp">
                     <TextView
-                        android:id="@+id/tv_point"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/tv_walletAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="₹ 0"
                         android:textSize="30sp"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:padding="10dp"
                         android:layout_gravity="center_horizontal"/>
                     <TextView
@@ -42,11 +39,11 @@
                         android:text="MyWallet Balance"
                         android:textSize="18sp"
                         android:textStyle="normal"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:layout_marginTop="50dp"
                         android:padding="10dp"
                         android:layout_gravity="center_horizontal"/>
-                </android.support.v7.widget.CardView>
+
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_intro"
@@ -55,13 +52,7 @@
                 android:layout_below="@+id/rl_points"
                 android:layout_marginTop="0.2dp">
 
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardUseCompatPadding="false"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="0dp">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -73,7 +64,7 @@
                             android:text="Great! Now invite more friends."
                             android:textSize="18sp"
                             android:textStyle="normal"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/white"
                             android:padding="10dp"
                             android:layout_marginTop="10dp"
                             android:layout_centerHorizontal="true"/>
@@ -96,7 +87,7 @@
                         <View
                             android:layout_width="wrap_content"
                             android:layout_height="0.3dp"
-                            android:background="@color/black"
+                            android:background="@color/white"
                             android:layout_toRightOf="@+id/iv_one"
                             android:layout_toLeftOf="@+id/iv_two"
                             android:layout_below="@+id/tv_msg"
@@ -112,7 +103,7 @@
                         <View
                             android:layout_width="wrap_content"
                             android:layout_height="0.3dp"
-                            android:background="@color/black"
+                            android:background="@color/white"
                             android:layout_toRightOf="@+id/iv_two"
                             android:layout_toLeftOf="@+id/iv_three"
                             android:layout_below="@+id/tv_msg"
@@ -127,6 +118,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_alignParentRight="true"/>
                         <TextView
+                            android:textColor="@color/white"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/iv_one"
@@ -135,6 +127,7 @@
                             android:gravity="center"
                             android:text="Invite a friend with your referral code"/>
                         <TextView
+                            android:textColor="@color/white"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/iv_one"
@@ -142,19 +135,19 @@
                             android:layout_marginTop="10dp"
                             android:layout_alignParentRight="true"
                             android:gravity="center"
-                            android:text="When friend signs up you earn ₹ 5"/>
+                            android:text="When friend signs up you earn ₹ 30"/>
                         <TextView
+                            android:textColor="@color/white"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/iv_one"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
-                            android:text="Friend signs up and \n earn ₹ 5"/>
+                            android:text="Friend signs up, \n join match earn ₹ 30"/>
 
                     </RelativeLayout>
 
-                </android.support.v7.widget.CardView>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_refer"
@@ -163,13 +156,7 @@
                 android:layout_below="@+id/rl_intro"
                 android:layout_marginTop="5dp">
 
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardUseCompatPadding="false"
-                    app:cardElevation="2dp"
-                    app:cardCornerRadius="0dp">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -180,7 +167,7 @@
                             android:text="Share your Referral Code"
                             android:textSize="18sp"
                             android:textStyle="normal"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:padding="10dp"
                             android:layout_centerHorizontal="true"/>
                         <TextView
@@ -199,7 +186,7 @@
                         <View
                             android:layout_width="100dp"
                             android:layout_height="0.5dp"
-                            android:background="@color/black"
+                            android:background="@color/white"
                             android:layout_below="@+id/tv_ref_code"
                             android:layout_toLeftOf="@+id/tv_via"
                             android:layout_marginTop="10dp"
@@ -209,14 +196,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="via"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="16sp"
                             android:layout_centerHorizontal="true"
                             android:layout_below="@+id/tv_ref_code"/>
                         <View
                             android:layout_width="100dp"
                             android:layout_height="0.5dp"
-                            android:background="@color/black"
+                            android:background="@color/white"
                             android:layout_toRightOf="@+id/tv_via"
                             android:layout_below="@+id/tv_ref_code"
                             android:layout_marginTop="10dp"
@@ -254,52 +241,8 @@
 
                         </RelativeLayout>
                     </RelativeLayout>
-                </android.support.v7.widget.CardView>
+
             </RelativeLayout>
-            <android.support.v7.widget.CardView
-                android:id="@+id/card_ref_code"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                app:cardUseCompatPadding="false"
-                app:cardElevation="2dp"
-                app:cardCornerRadius="0dp"
-                android:layout_below="@+id/rl_refer"
-                android:layout_marginTop="5dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Your Referral Code "
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:padding="16dp"/>
-                    <TextView
-                        android:id="@+id/tv_ref_code_below"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CK67C4"
-                        android:textColor="@color/colorThemeGolden"
-                        android:textSize="16sp"
-                        android:padding="16dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="30dp"/>
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-            <!-- <TextView
-                 android:id="@+id/tv_term"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="Terms and Conditions"
-                 android:textColor="@color/colorPrimaryDark"
-                 android:textSize="14sp"
-                 android:padding="16dp"
-                 android:layout_centerHorizontal="true"
-                 android:layout_below="@+id/card_ref_code"/>-->
 
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>

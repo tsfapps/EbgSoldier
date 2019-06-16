@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.earnbygame.ebgsoldier.R;
-import com.earnbygame.ebgsoldier.model.User;
+import com.earnbygame.ebgsoldier.model.login.User;
 
 import java.util.List;
 

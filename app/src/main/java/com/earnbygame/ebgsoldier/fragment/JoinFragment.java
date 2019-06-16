@@ -16,9 +16,7 @@ import com.earnbygame.ebgsoldier.adapter.JoinAdapter;
 import com.earnbygame.ebgsoldier.api.Api;
 import com.earnbygame.ebgsoldier.api.ApiClients;
 import com.earnbygame.ebgsoldier.model.ModelJoinMatch;
-import com.earnbygame.ebgsoldier.model.User;
-import com.earnbygame.ebgsoldier.utils.Constant;
-import com.earnbygame.ebgsoldier.utils.CustomLog;
+import com.earnbygame.ebgsoldier.model.login.User;
 
 import java.util.List;
 

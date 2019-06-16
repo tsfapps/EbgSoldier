@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.earnbygame.ebgsoldier.R;
-import com.earnbygame.ebgsoldier.model.ModelLogin;
-import com.earnbygame.ebgsoldier.model.User;
+import com.earnbygame.ebgsoldier.model.login.ModelLogin;
+import com.earnbygame.ebgsoldier.model.login.User;
 import com.earnbygame.ebgsoldier.presenter.PresenterLogin;
 
 import butterknife.BindView;

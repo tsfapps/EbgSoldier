@@ -34,31 +34,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
+                    android:fontFamily="serif-monospace"
                     android:layout_below="@+id/tvToolbar"
                     android:text="Earn By Game"
                     android:gravity="center"
-                    android:textColor="@color/grey"
-                    android:textSize="10sp"
+                    android:textColor="@color/colorThemeGolden"
+                    android:textSize="12sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:ignore="SmallSp" />
-                <TextView
-                    android:layout_centerVertical="true"
-
-                    android:id="@+id/tv_wallet"
-                    android:text="Wallet Money"
-                    android:textColor="@color/grey"
-                    android:textSize="10sp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:ignore="SmallSp" />
+                     />
                 <TextView
                     android:id="@+id/tv_walletLabel"
-                    android:text="₹ 5500"
+                    android:text="   ₹5500"
+                    android:drawableLeft="@drawable/ic_wallet"
                     android:layout_centerVertical="true"
-                    android:layout_below="@+id/tv_wallet"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:textSize="16sp"

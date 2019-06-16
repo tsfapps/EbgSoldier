@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.earnbygame.ebgsoldier.R;
-import com.earnbygame.ebgsoldier.model.User;
+import com.earnbygame.ebgsoldier.model.login.User;
 
 import java.util.List;
 
