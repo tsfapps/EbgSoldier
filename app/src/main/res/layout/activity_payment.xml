@@ -47,29 +47,11 @@
 
     <ImageView
         android:id="@+id/iv_wallet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_wallet"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/ic_account"
         android:layout_margin="16dp"
         android:layout_below="@id/appBar"/>
-    <TextView
-        android:id="@+id/wallet_amount_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wallet Amount : ₹ "
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_toRightOf="@id/iv_wallet"
-        android:layout_marginTop="100dp"/>
-    <TextView
-        android:id="@+id/wallet_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="10"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_toRightOf="@id/wallet_amount_txt"
-        android:layout_marginTop="100dp"/>
 
     <TextView
         android:id="@+id/join_amount_txt"
@@ -79,8 +61,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_toRightOf="@id/iv_wallet"
-        android:layout_below="@id/wallet_amount"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="100dp"/>
     <TextView
         android:id="@+id/join_amount"
         android:layout_width="wrap_content"
@@ -89,14 +70,93 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_toRightOf="@id/join_amount_txt"
+        android:layout_marginTop="100dp"/>
+    <TextView
+        android:id="@+id/wallet_amount_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wallet Amount : ₹ "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/iv_wallet"
+        android:layout_below="@id/join_amount"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/wallet_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/wallet_amount_txt"
+        android:layout_below="@id/join_amount"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/bonus_amount_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bonus Amount : ₹ "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/iv_wallet"
         android:layout_below="@id/wallet_amount"
         android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/bonus_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/wallet_amount_txt"
+        android:layout_below="@id/wallet_amount"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/bonus_amount_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="* 30 % of join fee will be used from bonus amount"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        android:layout_toRightOf="@id/iv_wallet"
+        android:layout_below="@id/bonus_amount"
+        android:layout_marginTop="5dp"/>
+    <View
+        android:id="@+id/view"
+        android:layout_width="250dp"
+        android:layout_height="2dp"
+        android:background="@color/grey"
+        android:layout_toRightOf="@id/iv_wallet"
+        android:layout_below="@id/bonus_amount_desc"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/total_amount_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Amount : ₹ "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/iv_wallet"
+        android:layout_below="@id/view"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/total_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/total_amount_txt"
+        android:layout_below="@id/view"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 
     <EditText
         android:id="@+id/et_fee_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/iv_wallet"
+        android:layout_below="@id/total_amount"
         android:layout_margin="24dp"
         android:text="₹ 10"
         android:gravity="center"

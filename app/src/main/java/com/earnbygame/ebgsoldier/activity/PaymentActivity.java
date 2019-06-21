@@ -59,6 +59,8 @@ public class PaymentActivity extends AppCompatActivity {
     private EditText mFeeAmountET;
     private ImageView mBackBtn;
     private String mMatchName;
+    private TextView mBonusAmountTV;
+    private TextView mTotalAmountTV;
 
 
     @Override
@@ -74,6 +76,8 @@ public class PaymentActivity extends AppCompatActivity {
         mFeeAmountET = findViewById(R.id.et_fee_amount);
         mPaymentBtn = findViewById(R.id.btn_payment);
         mBackBtn = findViewById(R.id.iv_back);
+        mBonusAmountTV = findViewById(R.id.bonus_amount);
+        mTotalAmountTV = findViewById(R.id.total_amount);
         checkReadSmsPermission();
         mMatchId = getIntent().getStringExtra("match_id");
         mMatchName = getIntent().getStringExtra("match_name");
@@ -129,15 +133,26 @@ public class PaymentActivity extends AppCompatActivity {
         mList.clear();
         mList = User.listAll(User.class);
         int wallet = Integer.parseInt(mList.get(0).getWalletAmount());
+        int bonus = Integer.parseInt(mList.get(0).getTotalEarnedRefferals());
+        double bonusAmount = mEntryFee * 0.3;
+        Log.d("danny","Bonus amount : "+ bonus + " 30% of bonus :"+ bonusAmount);
         mWalletAmountTV.setText(String.valueOf(wallet));
         mJoinAmountTV.setText(String.valueOf(mEntryFee));
-        if (mEntryFee > wallet){
+        mBonusAmountTV.setText(String.valueOf(bonus));
+        double mNewEntryFee;
+        if (bonus >= bonusAmount) {
+            mNewEntryFee = mEntryFee - bonusAmount;
+        } else {
+            mNewEntryFee = mEntryFee - bonus;
+        }
+        mTotalAmountTV.setText(String.valueOf(mNewEntryFee - wallet));
+        if (mNewEntryFee > wallet){
             mFeeAmountET.setVisibility(View.VISIBLE);
-            mAmount = String.valueOf(mEntryFee - wallet);
+            mAmount = String.valueOf(mNewEntryFee - wallet);
             mFeeAmountET.setText("₹ "+ mAmount);
             mPaymentBtn.setText("Add");
         } else {
-            mAmount = String.valueOf(mEntryFee);
+            mAmount = String.valueOf(mNewEntryFee);
             mFeeAmountET.setVisibility(View.GONE);
             mPaymentBtn.setText("Join");
         }
