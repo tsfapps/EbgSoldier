@@ -81,7 +81,7 @@ public interface Api {
             @Field("txnamount") String txnAmount,
             @Field("user_id") String userId
     );
-
+//http://earnbygame.com/api/api_about_match.php
     @FormUrlEncoded
     @POST("api/api_match_details.php")
     Call<ModelMatchDetail> matchDetailApi(
@@ -89,8 +89,14 @@ public interface Api {
     );
 
     @FormUrlEncoded
+    @POST("api/api_about_match.php")
+    Call<ModelMatchDetail> matchAboutApi(
+            @Field("match_id") String matchId
+    );
+//http://earnbygame.com/api/api_joined_users.php
+    @FormUrlEncoded
     @POST("api/api_joined_users.php")
-    Call<ModelMatchUserJoined> matchUserJoined(
+    Call<List<ModelMatchUserJoined>> matchUserJoined(
             @Field("match_id") String matchId
     );
 

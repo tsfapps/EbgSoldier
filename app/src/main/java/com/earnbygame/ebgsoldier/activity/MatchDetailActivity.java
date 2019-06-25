@@ -3,6 +3,8 @@ package com.earnbygame.ebgsoldier.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,16 +12,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.earnbygame.ebgsoldier.R;
+import com.earnbygame.ebgsoldier.adapter.JoinedUserAdapter;
 import com.earnbygame.ebgsoldier.api.Api;
 import com.earnbygame.ebgsoldier.api.ApiClients;
 import com.earnbygame.ebgsoldier.model.ModelMatchDetail;
 import com.earnbygame.ebgsoldier.model.ModelMatchUserJoined;
 
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MatchDetailActivity extends AppCompatActivity {
+
+    private RecyclerView.LayoutManager tLayoutManager;
+    private JoinedUserAdapter tAdapter;
+    private List<ModelMatchUserJoined> tListUserJoined;
 
     private String mMatchId;
     private String mMatchName;
@@ -29,10 +40,15 @@ public class MatchDetailActivity extends AppCompatActivity {
     private ImageView mBackIV;
     private Button mBtnLoadUserJoined;
 
+    @BindView(R.id.rvJoinedUser)
+    protected RecyclerView rvJoinedUser;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.frag_match_detail);
+        setContentView(R.layout.activity_match_detail);
+        ButterKnife.bind(this);
         init();
     }
 
@@ -69,20 +85,28 @@ public class MatchDetailActivity extends AppCompatActivity {
                 }
             }
         });
+
+        tLayoutManager = new LinearLayoutManager(this);
+        rvJoinedUser.setLayoutManager(tLayoutManager);
     }
 
     private void callMatchUserJoinedApi(String mMatchId) {
         Api api = ApiClients.getApiClients().create(Api.class);
-        Call<ModelMatchUserJoined> call = api.matchUserJoined(mMatchId);
-        call.enqueue(new Callback<ModelMatchUserJoined>() {
+        Call<List<ModelMatchUserJoined>> call = api.matchUserJoined(mMatchId);
+        call.enqueue(new Callback<List<ModelMatchUserJoined>>() {
             @Override
-            public void onResponse(Call<ModelMatchUserJoined> call, Response<ModelMatchUserJoined> response) {
+            public void onResponse(Call<List<ModelMatchUserJoined>> call, Response<List<ModelMatchUserJoined>> response) {
                 Log.d("danny","callMatchUserJoinedApi onResponse :"+ response.body().toString());
+                rvJoinedUser.setVisibility(View.VISIBLE);
+                tListUserJoined = response.body();
+                tAdapter = new JoinedUserAdapter(tListUserJoined, getApplicationContext());
+                rvJoinedUser.setAdapter(tAdapter);
+
             }
 
             @Override
-            public void onFailure(Call<ModelMatchUserJoined> call, Throwable t) {
-                Log.d("danny","callMatchUserJoinedApi onFailure :"+ call.toString());
+            public void onFailure(Call<List<ModelMatchUserJoined>> call, Throwable t) {
+                Log.d("danny","callMatchUserJoinedApi onFailure : "+ t);
                 t.printStackTrace();
             }
         });
@@ -91,7 +115,7 @@ public class MatchDetailActivity extends AppCompatActivity {
     private void callMatchDetailApi() {
         Log.d("danny","callMatchDetailApi matchId :"+mMatchId);
         Api api = ApiClients.getApiClients().create(Api.class);
-        Call<ModelMatchDetail> call = api.matchDetailApi(mMatchId);
+        Call<ModelMatchDetail> call = api.matchDetailApi("");
         call.enqueue(new Callback<ModelMatchDetail>() {
             @Override
             public void onResponse(Call<ModelMatchDetail> call, Response<ModelMatchDetail> response) {
