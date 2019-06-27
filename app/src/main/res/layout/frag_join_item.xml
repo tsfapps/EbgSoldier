@@ -19,7 +19,7 @@
         android:scaleType="fitXY"
         android:src="@drawable/ebg_logo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="160dp"
         android:visibility="gone"/>
             <LinearLayout
                 android:orientation="horizontal"
