@@ -12,4 +12,41 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_exit">Exit</string>
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="logout">Logout</string>
+    <string name="terms_and_condition">Terms and Condition</string>
+    <string name="comments">Comments</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="faq">FAQ</string>
+    <string name="about_ebg_soldier">About EBG Soldier</string>
+    <string name="matches_on_youtube">Matches on Youtube</string>
+    <string name="top_players">Top players</string>
+    <string name="latest_announcements">Latest Announcements</string>
+    <string name="my_wallet">My Wallet</string>
+    <string name="my_offers">My Offers</string>
+    <string name="my_profile">My Profile</string>
+    <string name="room_and_pass">Tap for Room Id and Password</string>
+    <string name="about_match">
+
+        &gt; Entry fee is per individual and not for squad/ duo team.\n\n
+        &gt; You will be disqualified and get no refund ,no rewards if \n\n
+PUBG level below 30.\n
+PUBG account of the current season and have HEADSHOT % more than 20%.\n
+
+        &gt; Make sure to grab ROOM ID  and PASSWORD before 10 to 15 min of the match start time .\n\n
+&gt; Do not share the room ID and PASSWORD with anyone who has not joined the match. If you are found doing such activities, your account may get terminated and all the winning’s amount will be Confiscated.\n\n
+&gt; Make sure to join the room ASAP, before the match starts .\n\n
+&gt; If in any way you failed to join the room by the match start time then we aren’t responsible for it.Refund in such cases wont be prossesed.So make sure to join on time .\n\n
+&gt; Griefing and teaming is against the game rules .any participants found doing so will be disqualified and the prizes will be lost.\n\n
+&gt; The matches may be free or paid .if paid then you have to pay the entry fee. There are total 100 spots available. Join before all the spots are filled .\n\n
+&gt; Use only mobile to join the match. \n\n
+&gt; Only 30+ level of PUBG and more than 50 matches played players are allowed . if you are below that we kick you and you will not get any refund or prize.\n\n
+&gt; According to Gujraat govt.notification PUBG game has been banned in some cities so it is our request to the players of that particular areas is that do not be a part of the Earn by Game [EBG] till the time of next govt. Notification. EBG will not be responsible for any action taken by police or govt.\n\n
+&gt; Use  ASIA server to join tournament in PUBG.
+
+
+
+    </string>
+    <string name="loreum_epsum">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero\'s De Finibus Bonorum et Malorum for use in a type specimen book.</string>
 </resources>

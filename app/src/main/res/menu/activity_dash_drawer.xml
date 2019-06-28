@@ -7,35 +7,55 @@
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_profile"
-            android:title="My Profile" />
+            android:title="@string/my_profile" />
+        <item
+            android:id="@+id/nav_rewards"
+            android:icon="@drawable/ic_offer"
+            android:title="@string/my_offers" />
         <item
             android:id="@+id/nav_wallet"
-            android:icon="@drawable/ic_rupee"
-            android:title="My Wallet" />
+            android:icon="@drawable/ic_wallet"
+            android:title="@string/my_wallet" />
+        <item
+            android:id="@+id/nav_notice"
+            android:icon="@drawable/ic_notifications"
+            android:title="@string/latest_announcements" />
         <item
             android:id="@+id/nav_top_players"
             android:icon="@drawable/ic_join"
-            android:title="Top players" />
+            android:title="@string/top_players" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_live"
-            android:title="Matches on Youtube" />
+            android:title="@string/matches_on_youtube" />
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_details"
-            android:title="About EBG Soldier" />
+            android:title="@string/about_ebg_soldier" />
+        <item
+            android:id="@+id/nav_faq"
+            android:icon="@drawable/ic_faq"
+            android:title="@string/faq" />
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/ic_faq"
+            android:title="@string/contact_us"/>
+        <item
+            android:id="@+id/nav_terms"
+            android:icon="@drawable/ic_terms"
+            android:title="@string/terms_and_condition" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/communicate">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="@string/share" />
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_pro_logout"
-                android:title="Logout" />
+                android:title="@string/logout" />
         </menu>
     </item>
 

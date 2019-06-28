@@ -8,7 +8,6 @@
     tools:context="com.earnbygame.ebgsoldier.activity.DashActivity"
     tools:showIn="@layout/app_bar_dash">
     <FrameLayout
-        android:layout_below="@+id/appbar"
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

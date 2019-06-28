@@ -135,7 +135,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_alignParentRight="true"
                             android:gravity="center"
-                            android:text="When friend signs up you earn ₹ 30"/>
+                            android:text="When friend play you earn ₹ 30"/>
                         <TextView
                             android:textColor="@color/white"
                             android:layout_width="100dp"

@@ -163,17 +163,17 @@
                             android:layout_height="wrap_content"
                             android:text="ACCOUNT DETAILS"
                             android:textAllCaps="true"/>
-                        <TextView
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:textSize="14sp"
-                        android:textStyle="bold" android:text="Edit"
-                        android:drawableEnd="@drawable/ic_pro_pen"
-                        android:textColor="@color/white"
-                        android:id="@+id/tv_edit_profile"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:textAllCaps="true"/>
+                        <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:gravity="end"-->
+                        <!--android:textSize="14sp"-->
+                        <!--android:textStyle="bold" android:text="Edit"-->
+                        <!--android:drawableEnd="@drawable/ic_pro_pen"-->
+                        <!--android:textColor="@color/white"-->
+                        <!--android:id="@+id/tv_edit_profile"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:textAllCaps="true"/>-->
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
                 <LinearLayout

@@ -115,6 +115,7 @@ public class PaymentActivity extends AppCompatActivity {
                         generateChecksumApi();
                     } else {
                         callAmountDeductionApi();
+
                     }
                 }
             }
@@ -308,8 +309,10 @@ public class PaymentActivity extends AppCompatActivity {
 
     private void callAmountDeductionApi() {
 
+        double bonusAmount = mEntryFee * 0.3;
+        String bonusTxnAmnt = String.valueOf(bonusAmount);
         Api api = ApiClients.getApiClients().create(Api.class);
-        Call<ModelTransactionHistory> call = api.amountDeductionApi(mMatchId, mAmount, mCustId);
+        Call<ModelTransactionHistory> call = api.amountDeductionApi(mMatchId, mAmount, bonusTxnAmnt, mCustId);
         call.enqueue(new Callback<ModelTransactionHistory>() {
             @Override
             public void onResponse(Call<ModelTransactionHistory> call, Response<ModelTransactionHistory> response) {

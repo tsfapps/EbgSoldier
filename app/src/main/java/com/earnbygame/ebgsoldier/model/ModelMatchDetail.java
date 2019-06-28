@@ -7,12 +7,13 @@ import java.util.List;
 
 public class ModelMatchDetail {
 
-    @SerializedName("pubg_user_name")
+
+    @SerializedName("id")
     @Expose
-    private List<String> pubgUserName = null;
-    @SerializedName("profile_pic")
+    private String id;
+    @SerializedName("match_id")
     @Expose
-    private List<String> profilePic = null;
+    private String matchId;
     @SerializedName("match_name")
     @Expose
     private String matchName;
@@ -58,6 +59,27 @@ public class ModelMatchDetail {
     @SerializedName("remain_to_join")
     @Expose
     private String remainToJoin;
+    @SerializedName("join_date")
+    @Expose
+    private String joinDate;
+    @SerializedName("join_time")
+    @Expose
+    private String joinTime;
+    @SerializedName("winner")
+    @Expose
+    private Object winner;
+    @SerializedName("winning_amount")
+    @Expose
+    private Object winningAmount;
+    @SerializedName("room_id")
+    @Expose
+    private String roomId;
+    @SerializedName("room_password")
+    @Expose
+    private String roomPassword;
+    @SerializedName("status")
+    @Expose
+    private String status;
     @SerializedName("match_image")
     @Expose
     private String matchImage;
@@ -68,20 +90,20 @@ public class ModelMatchDetail {
     @Expose
     private String content;
 
-    public List<String> getPubgUserName() {
-        return pubgUserName;
+    public String getId() {
+        return id;
     }
 
-    public void setPubgUserName(List<String> pubgUserName) {
-        this.pubgUserName = pubgUserName;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public List<String> getProfilePic() {
-        return profilePic;
+    public String getMatchId() {
+        return matchId;
     }
 
-    public void setProfilePic(List<String> profilePic) {
-        this.profilePic = profilePic;
+    public void setMatchId(String matchId) {
+        this.matchId = matchId;
     }
 
     public String getMatchName() {
@@ -204,6 +226,62 @@ public class ModelMatchDetail {
         this.remainToJoin = remainToJoin;
     }
 
+    public String getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(String joinDate) {
+        this.joinDate = joinDate;
+    }
+
+    public String getJoinTime() {
+        return joinTime;
+    }
+
+    public void setJoinTime(String joinTime) {
+        this.joinTime = joinTime;
+    }
+
+    public Object getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Object winner) {
+        this.winner = winner;
+    }
+
+    public Object getWinningAmount() {
+        return winningAmount;
+    }
+
+    public void setWinningAmount(Object winningAmount) {
+        this.winningAmount = winningAmount;
+    }
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
+
+    public String getRoomPassword() {
+        return roomPassword;
+    }
+
+    public void setRoomPassword(String roomPassword) {
+        this.roomPassword = roomPassword;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getMatchImage() {
         return matchImage;
     }
@@ -227,4 +305,5 @@ public class ModelMatchDetail {
     public void setContent(String content) {
         this.content = content;
     }
+
 }

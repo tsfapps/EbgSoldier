@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:background="@drawable/bg_main_front"
+    android:gravity="center_horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/margin_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:drawableEnd="@drawable/ic_email"
+            android:text="Mail Us     "
+            android:gravity="center_vertical|right"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:id="@+id/tv_contactMail"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+    </LinearLayout>
+    <android.support.v7.widget.CardView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="75dp">
+    <ImageView
+        android:src="@drawable/ebg_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </android.support.v7.widget.CardView>
+    <android.support.design.widget.TextInputLayout
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_top">
+    <EditText
+        android:id="@+id/et_contactUs"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:padding="4dp"
+        android:textSize="14sp"
+        android:gravity="start"
+        android:hint="Write your Feedback or Comments (Max 200 Characters)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_et_white"
+        android:minLines="12"
+        android:maxLength="200"
+       />
+</android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_submitContact"
+        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_btn_main"/>
+</LinearLayout>

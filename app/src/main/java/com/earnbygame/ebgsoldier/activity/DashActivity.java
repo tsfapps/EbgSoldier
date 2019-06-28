@@ -19,6 +19,9 @@ import android.widget.TextView;
 
 import com.earnbygame.ebgsoldier.BuildConfig;
 import com.earnbygame.ebgsoldier.R;
+import com.earnbygame.ebgsoldier.fragment.NotificationFragment;
+import com.earnbygame.ebgsoldier.fragment.TermFragment;
+import com.earnbygame.ebgsoldier.fragment.FragmentContact;
 import com.earnbygame.ebgsoldier.fragment.ReferralFragment;
 import com.earnbygame.ebgsoldier.fragment.JoinFragment;
 import com.earnbygame.ebgsoldier.fragment.LiveFragment;
@@ -143,34 +146,47 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_profile) {
-            mFragmentManager.beginTransaction().replace(R.id.frame_container,ProfileFragment.newInstance(mUserList)).commit();
-
-        } else if (id == R.id.nav_wallet) {
-
-        } else if (id == R.id.nav_top_players) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-            try {
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "EBG Soldier");
-                String shareMessage= "\nLet me recommend you this application\n\n";
-                shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
-                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
-                startActivity(Intent.createChooser(shareIntent, "choose one"));
-            } catch(Exception e) {
-                //e.toString();
-            }
 
 
-        } else if (id == R.id.nav_logout) {
-            logoutUser();
+        switch (item.getItemId()){
+            case R.id.nav_profile:
+                mFragmentManager.beginTransaction().replace(R.id.frame_container,ProfileFragment.newInstance(mUserList)).addToBackStack(null).commit();
+                break;
+                case R.id.nav_wallet:
+                    mFragmentManager.beginTransaction().replace(R.id.frame_container,new WalletFragment()).addToBackStack(null).commit();
+                break;
+                case R.id.nav_top_players:
+//                mFragmentManager.beginTransaction().replace(R.id.frame_container, new TermFragment()).addToBackStack(null).commit();
+                break;
+                case R.id.nav_terms:
+                mFragmentManager.beginTransaction().replace(R.id.frame_container, new TermFragment()).addToBackStack(null).commit();
+                break;
+
+                case R.id.nav_contact:
+                mFragmentManager.beginTransaction().replace(R.id.frame_container, new FragmentContact()).addToBackStack(null).commit();
+                break;
+                case R.id.nav_notice:
+                mFragmentManager.beginTransaction().replace(R.id.frame_container, new NotificationFragment()).addToBackStack(null).commit();
+                break;
+
+            case R.id.nav_share:
+                try {
+                    Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                    shareIntent.setType("text/plain");
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "EBG Soldier");
+                    String shareMessage= "\nLet me recommend you this application\n\n";
+                    shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                    startActivity(Intent.createChooser(shareIntent, "choose one"));
+                } catch(Exception e) {
+                    //e.toString();
+                }
+                break;
+
+            case R.id.nav_logout:
+                logoutUser();
+                break;
+
         }
 
         drawer.closeDrawer(GravityCompat.START);

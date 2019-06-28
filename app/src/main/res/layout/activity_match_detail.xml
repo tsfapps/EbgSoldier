@@ -44,12 +44,15 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
+        android:background="@drawable/bg_main_front"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/appBar"
         android:layout_above="@id/btn_join">
     <LinearLayout
+        android:background="@drawable/bg_simple_transparent"
+        android:padding="@dimen/margin_top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -71,72 +74,171 @@
         </android.support.v7.widget.CardView>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/margin_top"
+            android:gravity="center_horizontal"
+            android:id="@+id/txt_match_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Match room details"
-            android:textColor="@color/black"
+            android:text="First Match"
+            android:textColor="@color/colorThemeGolden"
             android:padding="4dp"
             android:textStyle="bold"
             android:textSize="18sp"/>
-        <TextView
-            android:id="@+id/txt_match_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:text="First Match"
-            android:textColor="@color/black"
-            android:padding="4dp"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
         <TextView
             android:id="@+id/txt_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
             android:text="Room ID and Password will be updated here before 10 minutes for Match schedule time."
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:padding="4dp"
             android:textStyle="normal"
             android:textSize="16sp"/>
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/llRoomIdPass"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginTop="@dimen/margin_top"
+            android:background="@drawable/bg_et_white"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Room ID"
+                android:textColor="@color/colorThemeGolden"
+                android:padding="4dp"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+            <View
+                android:layout_marginEnd="@dimen/margin_top"
+                android:layout_width=".5dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"/>
 
+            <TextView
+                android:id="@+id/tvRoomId"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="wrap_content"
+                android:text="room_id"
+                android:textColor="@color/colorThemeGolden"
+                android:padding="4dp"
+                android:textStyle="bold"
+                android:textSize="14sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/bg_et_white"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textColor="@color/colorThemeGolden"
+                android:padding="4dp"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+            <View
+                android:layout_marginEnd="@dimen/margin_top"
+                android:layout_width=".5dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"/>
+
+            <TextView
+                android:id="@+id/tvRoomPassword"
+                android:layout_width="0dp"
+                android:layout_weight="1.5"
+                android:layout_height="wrap_content"
+                android:text="password"
+                android:textColor="@color/colorThemeGolden"
+                android:padding="4dp"
+                android:textStyle="bold"
+                android:textSize="14sp"/>
+        </LinearLayout>
+        </LinearLayout>
         <TextView
+            android:layout_marginStart="@dimen/margin_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginTop="@dimen/margin_top"
             android:text="About this match"
-            android:textColor="@color/black"
+            android:textColor="@color/colorThemeGolden"
             android:padding="4dp"
             android:textStyle="bold"
             android:textSize="18sp"/>
         <TextView
-            android:id="@+id/txt_about_desc"
-            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/margin_top"
+            android:background="@drawable/bg_et_white"
+            android:id="@+id/tv_contentMatch"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-            android:textColor="@color/black"
+            android:text="About Match"
+            android:textColor="@color/white"
             android:padding="4dp"
             android:textStyle="normal"
             android:textSize="14sp"/>
-
-        <Button
-            android:id="@+id/btn_load_user"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:text="Load Participant"
-            android:background="@color/active_state_submit_button"
-            android:textAllCaps="false"
+        <View
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_width="match_parent"
+            android:layout_height=".5dp"/>
+        <TextView
+            android:layout_marginStart="@dimen/margin_top"
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rule of Match"
+            android:textColor="@color/golden"
+            android:padding="4dp"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+        <TextView
+            android:layout_marginStart="@dimen/margin_top"
+            android:layout_marginEnd="@dimen/margin_top"
+            android:background="@drawable/bg_et_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about_match"
             android:textColor="@color/white"
-            android:layout_margin="50dp"
+            android:padding="4dp"
+            android:textStyle="normal"
+            android:textSize="14sp"/>
+        <View
+            android:layout_marginTop="@dimen/margin_top"
+            android:layout_width="match_parent"
+            android:layout_height=".5dp"
+            android:background="@color/white"/>
+
+
+        <TextView
+            android:id="@+id/tvLoadUser"
+            android:layout_width="180dp"
+            android:gravity="center"
+            android:layout_height="40dp"
+            android:drawableEnd="@drawable/ic_refresh_white"
+            android:text="Load Participant"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:background="@drawable/bg_main_front"
+            android:textColor="@color/white"
+            android:drawableTint="@color/white"
+            android:layout_marginTop="@dimen/margin_top"
             android:layout_gravity="center_horizontal"/>
         <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="@dimen/margin_top"
             android:id="@+id/rvJoinedUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
     <Button
         android:id="@+id/btn_join"

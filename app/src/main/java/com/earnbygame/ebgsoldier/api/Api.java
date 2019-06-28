@@ -79,6 +79,7 @@ public interface Api {
     Call<ModelTransactionHistory> amountDeductionApi(
             @Field("match_id") String matchId,
             @Field("txnamount") String txnAmount,
+            @Field("txn_bonus_amnt") String txn_bonus_amnt,
             @Field("user_id") String userId
     );
 //http://earnbygame.com/api/api_about_match.php

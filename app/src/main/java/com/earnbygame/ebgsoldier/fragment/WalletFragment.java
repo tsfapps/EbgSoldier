@@ -157,6 +157,8 @@ public class WalletFragment extends Fragment {
 
         int wallet = Integer.parseInt(mUserList.get(0).getWalletAmount());
         tv_wallet_amount.setText(String.valueOf(wallet));
+        int bonusAmount = Integer.parseInt(mUserList.get(0).getTotalEarnedRefferals());
+        tv_bonus_amount.setText(String.valueOf(bonusAmount));
 //        mAmount = et_adding_amount.getText().toString();
 
     }
@@ -306,5 +308,4 @@ public class WalletFragment extends Fragment {
         }
         return sb.toString();
     }
-
 }

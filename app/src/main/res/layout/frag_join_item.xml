@@ -38,15 +38,27 @@
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/tv_matchJoin_gameName"
                     android:text="Evening Quad"
                     android:textStyle="bold"
                     android:textColor="@color/golden"
                     android:textSize="16sp"
-                  android:layout_width="match_parent"
+                  android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
+                <TextView
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/room_and_pass"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:fontFamily="serif-monospace"
+                    android:textSize="10sp"
+                  android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="SmallSp" />
+
                     <LinearLayout
                         android:layout_marginTop="4dp"
                         android:orientation="horizontal"

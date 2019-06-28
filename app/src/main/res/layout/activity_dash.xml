@@ -21,7 +21,7 @@
         android:fitsSystemWindows="true"
         app:itemIconTint="@color/colorThemeGolden"
         app:itemTextColor="@color/colorThemeGolden"
-        android:background="@drawable/bg_simple_transparent"
+        android:background="@drawable/bg_drawer_transparent"
         app:headerLayout="@layout/nav_header_dash"
         app:menu="@menu/activity_dash_drawer" />
 
