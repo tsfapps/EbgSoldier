@@ -14,6 +14,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/iv_match_pic"
+        android:scaleType="fitXY"
+        android:src="@drawable/ebg_logo"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:visibility="gone"/>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -38,14 +45,13 @@
                     android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
                 <TextView
                     android:id="@+id/tv_matchJoin_gameName"
                     android:text="Evening Quad"
                     android:textStyle="bold"
                     android:textColor="@color/golden"
                     android:textSize="16sp"
-                  android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     />
                 <TextView

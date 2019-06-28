@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.earnbygame.ebgsoldier.R;
 import com.earnbygame.ebgsoldier.activity.MatchDetailActivity;
 import com.earnbygame.ebgsoldier.activity.PaymentActivity;
@@ -45,6 +47,13 @@ public class JoinAdapter extends RecyclerView.Adapter<JoinAdapter.JoinViewHolder
     public void onBindViewHolder(@NonNull final JoinViewHolder joinViewHolder, int i) {
 
         final ModelJoinMatch tModel = tModels.get(i);
+        if (tModel.getMatchImage() != null && !tModel.getMatchImage().equals("")) {
+            joinViewHolder.iv_match_pic.setVisibility(View.VISIBLE);
+            Glide.with(mContext).load(tModel.getMatchImage()).placeholder(R.drawable.ebg_logo).into(joinViewHolder.iv_match_pic);
+            Log.d("danny","match_pic:"+tModel.getMatchImage()+" match_icon:"+tModel.getMatchIcon());
+        } else {
+            joinViewHolder.iv_match_pic.setVisibility(View.GONE);
+        }
         joinViewHolder.tv_matchJoin_gameName.setText(tModel.getMatchName());
         joinViewHolder.tv_matchJoin_date.setText("Date : "+tModel.getMatchDate());
         joinViewHolder.tv_matchJoin_time.setText("Time : "+tModel.getMatchTime());
@@ -142,6 +151,8 @@ public class JoinAdapter extends RecyclerView.Adapter<JoinAdapter.JoinViewHolder
         protected TextView tv_matchJoin_remainCount;
 @BindView(R.id.main_ll)
         protected LinearLayout mainLayout;
+@BindView(R.id.iv_match_pic)
+        protected ImageView iv_match_pic;
 
         public JoinViewHolder(@NonNull View itemView) {
             super(itemView);
