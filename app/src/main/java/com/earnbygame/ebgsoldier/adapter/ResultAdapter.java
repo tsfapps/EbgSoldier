@@ -3,6 +3,8 @@ package com.earnbygame.ebgsoldier.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,14 +14,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Button;
 
 import com.earnbygame.ebgsoldier.R;
 import com.earnbygame.ebgsoldier.fragment.ResultDetailFragment;
 import com.earnbygame.ebgsoldier.model.ModelMatchDetail;
 import com.earnbygame.ebgsoldier.model.ModelMatchResult;
+import com.earnbygame.ebgsoldier.activity.YouTubeActivity;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -34,6 +39,12 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
         this.tFragmentManager = tFragmentManager;
     }
 
+    private final Context mContext;
+
+    public ResultAdapter(Context tContext) {
+        this.mContext = tContext;
+    }
+
     @NonNull
     @Override
     public ResultViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -41,9 +52,15 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
         return new ResultViewHolder(view);
     }
 
-    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ResultViewHolder resultViewHolder, int i) {
+        resultViewHolder.mWatchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(mContext, YouTubeActivity.class);
+                mContext.startActivity(i);
+            }
+        });
 
         final ModelMatchResult tModel = tModels.get(i);
 
@@ -80,28 +97,8 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
 
     public class ResultViewHolder extends RecyclerView.ViewHolder{
 
-        @BindView(R.id.llMatchResultMain)
-        protected LinearLayout llMatchResultMain;
-        @BindView(R.id.tvResultName)
-        protected TextView tvResultName;
-        @BindView(R.id.tvResultDate)
-        protected TextView tvResultDate;
-        @BindView(R.id.tvResultTime)
-        protected TextView tvResultTime;
-        @BindView(R.id.tvResultFirstPrize)
-        protected TextView tvResultFirstPrize;
-        @BindView(R.id.tvResultPerKill)
-        protected TextView tvResultPerKill;
-        @BindView(R.id.tvResultEntryFees)
-        protected TextView tvResultEntryFees;
-        @BindView(R.id.tvResultType)
-        protected TextView tvResultType;
-        @BindView(R.id.tvResultVersion)
-        protected TextView tvResultVersion;
-        @BindView(R.id.tvResultMap)
-        protected TextView tvResultMap;
-        @BindView(R.id.btnResultNotJoined)
-        protected Button btnResultNotJoined;
+        @BindView(R.id.btn_watch)
+        protected Button mWatchBtn;
 
         public ResultViewHolder(@NonNull View itemView) {
             super(itemView);

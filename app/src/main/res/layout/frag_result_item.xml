@@ -165,6 +165,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Button
+                    android:id="@+id/btn_watch"
                     android:layout_marginEnd="4dp"
                     android:layout_marginTop="4dp"
                     android:background="@drawable/bg_btn_main"

@@ -61,6 +61,8 @@ public class PaymentActivity extends AppCompatActivity {
     private String mMatchName;
     private TextView mBonusAmountTV;
     private TextView mTotalAmountTV;
+    private int bonus;
+    private double bonusAmount;
 
 
     @Override
@@ -134,8 +136,8 @@ public class PaymentActivity extends AppCompatActivity {
         mList.clear();
         mList = User.listAll(User.class);
         int wallet = Integer.parseInt(mList.get(0).getWalletAmount());
-        int bonus = Integer.parseInt(mList.get(0).getTotalEarnedRefferals());
-        double bonusAmount = mEntryFee * 0.3;
+        bonus = Integer.parseInt(mList.get(0).getTotalEarnedRefferals());
+        bonusAmount = mEntryFee * 0.3;
         Log.d("danny","Bonus amount : "+ bonus + " 30% of bonus :"+ bonusAmount);
         mWalletAmountTV.setText(String.valueOf(wallet));
         mJoinAmountTV.setText(String.valueOf(mEntryFee));
@@ -308,9 +310,12 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
     private void callAmountDeductionApi() {
-
-        double bonusAmount = mEntryFee * 0.3;
-        String bonusTxnAmnt = String.valueOf(bonusAmount);
+        String bonusTxnAmnt;
+        if(bonus >= bonusAmount) {
+            bonusTxnAmnt = String.valueOf(bonusAmount);
+        } else {
+            bonusTxnAmnt = String.valueOf(bonus);
+        }
         Api api = ApiClients.getApiClients().create(Api.class);
         Call<ModelTransactionHistory> call = api.amountDeductionApi(mMatchId, mAmount, bonusTxnAmnt, mCustId);
         call.enqueue(new Callback<ModelTransactionHistory>() {
@@ -323,6 +328,7 @@ public class PaymentActivity extends AppCompatActivity {
                     Log.d("danny","callTransactionHistoryApi onResonse success ,, previous wallet amount :"+mList.get(0).getWalletAmount());
                     User user= mList.get(0);
                     user.setWalletAmount(String.valueOf(response.body().getWallet()));
+                    //user.setTotalEarnedRefferals(String.valueOf(response.body().getBonus)); TODO get bonus amount in onresponse
                     user.save();
                     Log.d("danny","callTransactionHistoryApi onResonse success ,, current wallet amount :"+response.body().getWallet());
                     Intent intent = new Intent(PaymentActivity.this, MatchDetailActivity.class);
