@@ -36,7 +36,7 @@ public class ResultFragment extends Fragment {
         tContext = getContext();
         tLayoutManager = new LinearLayoutManager(tContext);
         rvResult.setLayoutManager(tLayoutManager);
-        tAdapter = new ResultAdapter(tContext);
+        tAdapter = new ResultAdapter();
         rvResult.setAdapter(tAdapter);
     }
 
