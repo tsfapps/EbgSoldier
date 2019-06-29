@@ -9,16 +9,12 @@
     tools:context="com.earnbygame.ebgsoldier.activity.RegisterActivity">
     <ScrollView
         android:orientation="vertical"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activity.RegisterActivity"
         >
         <LinearLayout
-            android:background="@drawable/bg_color_white"
-            android:layout_margin="16dp"
+            android:background="@drawable/bg_simple_transparent"
             android:padding="20dp"
             android:gravity="center"
             android:orientation="vertical"
@@ -39,8 +35,7 @@
                     android:layout_height="match_parent" />
             </android.support.v7.widget.CardView>
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                style="@style/EditTextHint" >
                 <EditText
                     android:id="@+id/et_reg_Name"
                     android:drawableStart="@drawable/ic_golden_user"
@@ -51,8 +46,7 @@
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                style="@style/EditTextHint" >
                 <EditText
                     android:id="@+id/et_reg_user_name"
                     android:drawableStart="@drawable/ic_golden_user"
@@ -62,8 +56,7 @@
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                style="@style/EditTextHint" >
                 <EditText
                     android:id="@+id/et_reg_phone_no"
                     android:drawableStart="@drawable/ic_golden_phone"
@@ -75,8 +68,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                style="@style/EditTextHint" >
                 <EditText
                     android:id="@+id/et_reg_email"
                     android:drawableStart="@drawable/ic_golden_email"
@@ -87,9 +79,7 @@
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 app:passwordToggleEnabled="true"
-                app:passwordToggleDrawable="@drawable/ic_pass_show"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                style="@style/EditTextHint" >
                 <EditText
                     android:drawableStart="@drawable/ic_golden_password"
                     android:id="@+id/et_reg_pass"
@@ -100,9 +90,7 @@
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 app:passwordToggleEnabled="true"
-                app:passwordToggleDrawable="@drawable/ic_pass_show"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                style="@style/EditTextHint">
                 <EditText
                     android:drawableStart="@drawable/ic_golden_password"
                     android:id="@+id/et_reg_pass_re"
@@ -111,8 +99,7 @@
                     android:hint="Re enter the Password"
                     />
                 <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    style="@style/EditTextHint" >
                     <EditText
                         android:gravity="center_vertical"
                         android:id="@+id/et_reg_refer_code"
@@ -127,13 +114,8 @@
 
                 <Button
                     android:id="@+id/btn_reg_submit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAllCaps="false"
-                    android:layout_marginTop="@dimen/margin_top"
-                    android:textColor="@color/white"
-                    android:text="Submit"
-                    android:background="@drawable/bg_btn_main"/>
+                    style="@style/btn_main"
+                    android:text="Submit" />
 
 
             <LinearLayout

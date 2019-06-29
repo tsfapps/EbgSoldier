@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:padding="@dimen/margin_top"
+    android:background="@drawable/bg_main_front"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:background="@drawable/bg_drawer_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+<LinearLayout
+    android:layout_margin="20dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cardCornerRadius="50dp">
+        <ImageView
+            android:background="@drawable/ebg_logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v7.widget.CardView>
+    <android.support.design.widget.TextInputLayout
+        style="@style/EditTextHint">
+    <EditText
+        android:id="@+id/withdrawAmount"
+        android:inputType="number"
+        android:hint="Amount"
+        style="@style/et_login" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        style="@style/EditTextHint">
+    <EditText
+        android:id="@+id/withdrawAcountNumber"
+        android:hint="Account Number"
+        android:inputType="number"
+        style="@style/et_login" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        style="@style/EditTextHint">
+    <EditText
+        android:id="@+id/withdrawIfsc"
+        android:textAllCaps="true"
+        android:hint="IFSC Code"
+        style="@style/et_login" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        style="@style/EditTextHint">
+    <EditText
+        android:id="@+id/withdrawUpiId"
+        android:hint="UPI ID"
+        style="@style/et_login" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        style="@style/EditTextHint">
+    <EditText
+        android:id="@+id/withdrawPayTm"
+        android:inputType="phone"
+        android:hint="Paytm Number"
+        style="@style/et_login" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        style="@style/EditTextHint">
+    <EditText
+        android:inputType="phone"
+        android:id="@+id/withdrawGooglePay"
+        android:hint="Google Pay Number"
+        style="@style/et_login" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnWithdrawSubmit"
+        android:text="Submit"
+        style="@style/btn_main" />
+</LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:id="@+id/llMatchResultMain"
     android:background="@drawable/bg_simple_transparent"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
@@ -36,6 +37,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/tvResultName"
                     android:text="Evening Quad"
                     android:textStyle="bold"
                     android:textColor="@color/golden"
@@ -49,6 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/tvResultDate"
                         android:textColor="@color/grey"
                         android:text="Date : 20 May 2019"
                         android:textSize="10sp"
@@ -57,6 +60,7 @@
                         android:layout_height="wrap_content"
                         tools:ignore="SmallSp" />
                     <TextView
+                        android:id="@+id/tvResultTime"
                         android:textColor="@color/grey"
                         android:text="Time : 3:00 PM"
                         android:textSize="10sp"
@@ -100,13 +104,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/tvResultFirstPrize"
                     android:text="₹ 5000"
                     style="@style/tv_main_bold" />
                 <TextView
-
+                    android:id="@+id/tvResultPerKill"
                     android:text="₹ 100"
                     style="@style/tv_main_bold"/>
                 <TextView
+                    android:id="@+id/tvResultEntryFees"
                     android:text="₹ 50"
                     style="@style/tv_main_bold"/>
 
@@ -120,6 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+
                     android:text="TYPE"
                     style="@style/tv_main" />
 
@@ -138,13 +145,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/tvResultType"
                     android:text="DUO"
                     style="@style/tv_main_bold" />
                 <TextView
-
+                    android:id="@+id/tvResultVersion"
                     android:text="TPP"
                     style="@style/tv_main_bold"/>
                 <TextView
+                    android:id="@+id/tvResultMap"
                     android:text="ERANGEL"
                     style="@style/tv_main_bold"/>
             </LinearLayout>
@@ -166,6 +175,7 @@
                     android:layout_weight="1"
                     android:layout_height="40dp"/>
                 <Button
+                    android:id="@+id/btnResultNotJoined"
                     android:layout_marginTop="4dp"
                     android:layout_marginStart="4dp"
                     android:background="@drawable/bg_btn_main"

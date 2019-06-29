@@ -2,6 +2,9 @@ package com.earnbygame.ebgsoldier.api;
 
 import com.earnbygame.ebgsoldier.model.ModelChecksum;
 import com.earnbygame.ebgsoldier.model.ModelJoinMatch;
+import com.earnbygame.ebgsoldier.model.ModelMatchResult;
+import com.earnbygame.ebgsoldier.model.ModelMatchResultDetail;
+import com.earnbygame.ebgsoldier.model.ModelWithdraw;
 import com.earnbygame.ebgsoldier.model.login.ModelLogin;
 import com.earnbygame.ebgsoldier.model.ModelMatchDetail;
 import com.earnbygame.ebgsoldier.model.ModelMatchUserJoined;
@@ -40,6 +43,30 @@ public interface Api {
     @POST("api/api_join_match.php")
     Call<List<ModelJoinMatch>> joinMatch(
             @Field("user_id") String userId
+    );
+
+    @POST("api/api_result_match.php")
+    Call<List<ModelMatchResult>> matchResult(
+
+    );
+
+    @FormUrlEncoded
+    @POST("api/api_result_match_details.php")
+    Call<List<ModelMatchResultDetail>> matchResultDetails(
+            @Field("match_id") String match_id
+
+    );
+
+    @FormUrlEncoded
+    @POST("api/api_bank_details.php")
+    Call<ModelWithdraw> widthdraws(
+            @Field("user_id") String user_id,
+            @Field("requesting_amnt") String requesting_amnt,
+            @Field("account_no") String account_no,
+            @Field("ifsc_code") String ifsc_code,
+            @Field("upi_id") String upi_id,
+            @Field("paytm_no") String paytm_no,
+            @Field("google_pay_no") String google_pay_no
     );
 
     @FormUrlEncoded

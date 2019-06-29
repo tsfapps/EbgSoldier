@@ -24,6 +24,7 @@ import com.earnbygame.ebgsoldier.api.Api;
 import com.earnbygame.ebgsoldier.api.ApiClients;
 import com.earnbygame.ebgsoldier.model.ModelChecksum;
 import com.earnbygame.ebgsoldier.model.ModelTransactionHistory;
+import com.earnbygame.ebgsoldier.model.ModelWithdraw;
 import com.earnbygame.ebgsoldier.model.login.User;
 import com.earnbygame.ebgsoldier.utils.Constant;
 import com.earnbygame.ebgsoldier.utils.CustomLog;
@@ -87,6 +88,8 @@ public class WalletFragment extends Fragment {
     protected TextView tv_wallet500;
     @BindView(R.id.btn_addAmount)
     protected Button btn_addAmount;
+    @BindView(R.id.btn_withdraw)
+    protected Button btn_withdraw;
 
 
     @Nullable
@@ -307,5 +310,10 @@ public class WalletFragment extends Fragment {
                     .charAt(index));
         }
         return sb.toString();
+    }
+
+    @OnClick(R.id.btn_withdraw)
+    public void btn_withdrawClicked(View view){
+        fragmentManager.beginTransaction().replace(R.id.frame_container, new FragmentWithdraw()).addToBackStack(null).commit();
     }
 }
