@@ -328,7 +328,7 @@ public class PaymentActivity extends AppCompatActivity {
                     Log.d("danny","callTransactionHistoryApi onResonse success ,, previous wallet amount :"+mList.get(0).getWalletAmount());
                     User user= mList.get(0);
                     user.setWalletAmount(String.valueOf(response.body().getWallet()));
-                    //user.setTotalEarnedRefferals(String.valueOf(response.body().getBonus)); TODO get bonus amount in onresponse
+                    user.setTotalEarnedRefferals(String.valueOf(response.body().getBonus()));// TODO get bonus amount in onresponse
                     user.save();
                     Log.d("danny","callTransactionHistoryApi onResonse success ,, current wallet amount :"+response.body().getWallet());
                     Intent intent = new Intent(PaymentActivity.this, MatchDetailActivity.class);

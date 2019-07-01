@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.earnbygame.ebgsoldier.BuildConfig;
 import com.earnbygame.ebgsoldier.R;
+import com.earnbygame.ebgsoldier.fragment.FaqFragment;
 import com.earnbygame.ebgsoldier.fragment.NotificationFragment;
 import com.earnbygame.ebgsoldier.fragment.TermFragment;
 import com.earnbygame.ebgsoldier.fragment.FragmentContact;
@@ -38,6 +39,8 @@ import butterknife.OnClick;
 
 public class DashActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FragmentManager mFragmentManager;
+    private String strBonusAmount;
+
     @BindView(R.id.toolbar)
     protected Toolbar toolbar;
     @BindView(R.id.tvToolbar)
@@ -74,15 +77,20 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
         mUserList = User.listAll(User.class);
         if (mUserList.size() > 0){
             tv_walletLabel.setText("₹ "+mUserList.get(0).getWalletAmount());
+            strBonusAmount = mUserList.get(0).getTotalEarnedRefferals();
         }
     }
 
     @OnClick(R.id.tv_walletLabel)
     public void tv_walletLabelClicked(View view){
-        mFragmentManager.beginTransaction().replace(R.id.frame_container,new WalletFragment()).addToBackStack(null).commit();
+        mFragmentManager.beginTransaction().replace(R.id.frame_container,WalletFragment.newInstance(strBonusAmount)).addToBackStack(null).commit();
 
     }
     private void init() {
+        mUserList = User.listAll(User.class);
+        if (mUserList.size() > 0){
+            strBonusAmount = mUserList.get(0).getTotalEarnedRefferals();
+        }
         navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.nav_join);
     }
@@ -165,6 +173,11 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
                 case R.id.nav_contact:
                 mFragmentManager.beginTransaction().replace(R.id.frame_container, new FragmentContact()).addToBackStack(null).commit();
                 break;
+
+                case R.id.nav_faq:
+                mFragmentManager.beginTransaction().replace(R.id.frame_container, new FaqFragment()).addToBackStack(null).commit();
+                break;
+
                 case R.id.nav_notice:
                 mFragmentManager.beginTransaction().replace(R.id.frame_container, new NotificationFragment()).addToBackStack(null).commit();
                 break;

@@ -4,14 +4,11 @@
     android:elevation="22dp"
     android:background="@drawable/bg_simple_transparent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    app:cardCornerRadius="4dp"
+   android:layout_margin="@dimen/margin_top"
     android:padding="8dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -154,23 +151,12 @@
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_marginTop="@dimen/margin_top"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/watch_btn"
-                android:layout_marginEnd="4dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/bg_btn_main"
+               style="@style/btn_main"
                 android:text="Watch Match Live on You Tube"
-                android:textColor="@color/golden"
-                android:textAllCaps="false"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="40dp"/>
-            </LinearLayout>
+               />
 
         </LinearLayout>
 

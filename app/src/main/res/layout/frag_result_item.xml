@@ -115,8 +115,6 @@
                     android:id="@+id/tvResultEntryFees"
                     android:text="₹ 50"
                     style="@style/tv_main_bold"/>
-
-
             </LinearLayout>
             <LinearLayout
                 android:layout_marginTop="@dimen/margin_top"
@@ -165,27 +163,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Button
-                    android:id="@+id/btn_watch"
+                    android:id="@+id/btnResultWatch"
                     android:layout_marginEnd="4dp"
                     android:layout_marginTop="4dp"
-                    android:background="@drawable/bg_btn_main"
+                    style="@style/btn_main"
                     android:text="Watch Match"
-                    android:textColor="@color/golden"
-                    android:textAllCaps="false"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="40dp"/>
+                    android:layout_weight="1" />
                 <Button
                     android:id="@+id/btnResultNotJoined"
                     android:layout_marginTop="4dp"
                     android:layout_marginStart="4dp"
-                    android:background="@drawable/bg_btn_main"
+                   style="@style/btn_main"
                     android:text="Not Joined"
-                    android:textColor="@color/golden"
                     android:textAllCaps="false"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="40dp"/>
+                    android:layout_weight="1" />
             </LinearLayout>
 
         </LinearLayout>

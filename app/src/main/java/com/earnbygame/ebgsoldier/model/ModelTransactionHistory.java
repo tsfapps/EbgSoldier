@@ -15,6 +15,10 @@ public class ModelTransactionHistory {
     @Expose
     private Integer wallet;
 
+    @SerializedName("bonus")
+    @Expose
+    private String bonus;
+
     public Boolean getError() {
         return error;
     }
@@ -37,5 +41,13 @@ public class ModelTransactionHistory {
 
     public void setWallet(Integer wallet) {
         this.wallet = wallet;
+    }
+
+    public String getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(String bonus) {
+        this.bonus = bonus;
     }
 }

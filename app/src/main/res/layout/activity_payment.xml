@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:background="@drawable/bg_main_front"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -45,15 +47,22 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <RelativeLayout
+        android:background="@drawable/bg_simple_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBar">
+
     <ImageView
         android:id="@+id/iv_wallet"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:src="@drawable/ic_account"
+        android:src="@drawable/ic_wallet"
         android:layout_margin="16dp"
-        android:layout_below="@id/appBar"/>
+        />
 
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/join_amount_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,6 +72,7 @@
         android:layout_toRightOf="@id/iv_wallet"
         android:layout_marginTop="100dp"/>
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/join_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,6 +82,7 @@
         android:layout_toRightOf="@id/join_amount_txt"
         android:layout_marginTop="100dp"/>
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/wallet_amount_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,6 +93,7 @@
         android:layout_below="@id/join_amount"
         android:layout_marginTop="10dp"/>
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/wallet_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -92,6 +104,7 @@
         android:layout_below="@id/join_amount"
         android:layout_marginTop="10dp"/>
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/bonus_amount_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,6 +115,7 @@
         android:layout_below="@id/wallet_amount"
         android:layout_marginTop="10dp"/>
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/bonus_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -112,6 +126,7 @@
         android:layout_below="@id/wallet_amount"
         android:layout_marginTop="10dp"/>
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/bonus_amount_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -122,6 +137,7 @@
         android:layout_below="@id/bonus_amount"
         android:layout_marginTop="5dp"/>
     <View
+        android:textColor="@color/white"
         android:id="@+id/view"
         android:layout_width="250dp"
         android:layout_height="2dp"
@@ -131,6 +147,7 @@
         android:layout_marginTop="10dp"/>
 
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/total_amount_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -141,6 +158,7 @@
         android:layout_below="@id/view"
         android:layout_marginTop="10dp"/>
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/total_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -151,11 +169,10 @@
         android:layout_below="@id/view"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"/>
-
     <EditText
+        android:textColor="@color/white"
         android:id="@+id/et_fee_amount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/et_login"
         android:layout_below="@id/total_amount"
         android:layout_margin="24dp"
         android:text="₹ 10"
@@ -164,14 +181,10 @@
 
     <Button
         android:id="@+id/btn_payment"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
+        style="@style/btn_main"
         android:text="Add"
-        android:textAllCaps="false"
-        android:background="@color/colorThemeGolden"
-        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/et_fee_amount"
         android:layout_margin="24dp"/>
-
+    </RelativeLayout>
 </RelativeLayout>

@@ -37,6 +37,7 @@ public class ResultAdapterDetails extends RecyclerView.Adapter<ResultAdapterDeta
 
         ModelMatchResultDetail tModel = tModels.get(i);
 
+        resultDetailViewHolder.tvResultDetailRank.setText(tModel.getRank());
         resultDetailViewHolder.tvResultDetailName.setText(tModel.getUserName());
         resultDetailViewHolder.tvResultDetailKill.setText(tModel.getTotalKills());
         resultDetailViewHolder.tvResultDetailPrizes.setText(tModel.getPrizeMoney());
@@ -51,6 +52,8 @@ public class ResultAdapterDetails extends RecyclerView.Adapter<ResultAdapterDeta
 
     public class ResultDetailViewHolder extends RecyclerView.ViewHolder{
 
+        @BindView(R.id.tvResultDetailRank)
+        protected TextView tvResultDetailRank;
         @BindView(R.id.tvResultDetailName)
         protected TextView tvResultDetailName;
         @BindView(R.id.tvResultDetailKill)

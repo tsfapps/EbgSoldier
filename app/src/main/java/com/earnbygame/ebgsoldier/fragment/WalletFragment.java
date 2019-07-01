@@ -91,6 +91,12 @@ public class WalletFragment extends Fragment {
     @BindView(R.id.btn_withdraw)
     protected Button btn_withdraw;
 
+    public static WalletFragment newInstance(String strBonusAmount) {
+
+        WalletFragment fragment = new WalletFragment();
+        fragment.strBonusAmount = strBonusAmount;
+        return fragment;
+    }
 
     @Nullable
     @Override
@@ -112,7 +118,7 @@ public class WalletFragment extends Fragment {
         if (mUserList.size() > 0){
             strWalletAmount = mUserList.get(0).getWalletAmount();
             strEarnedAmount = mUserList.get(0).getTotalEarnedMatch();
-            strBonusAmount = mUserList.get(0).getTotalEarnedRefferals();
+//            strBonusAmount = mUserList.get(0).getTotalEarnedRefferals();
             mCustId =mUserList.get(0).getUserId();
             mEmail = mUserList.get(0).getEmail();
             mMobile = mUserList.get(0).getPhoneNo();
@@ -160,8 +166,7 @@ public class WalletFragment extends Fragment {
 
         int wallet = Integer.parseInt(mUserList.get(0).getWalletAmount());
         tv_wallet_amount.setText(String.valueOf(wallet));
-        int bonusAmount = Integer.parseInt(mUserList.get(0).getTotalEarnedRefferals());
-        tv_bonus_amount.setText(String.valueOf(bonusAmount));
+        tv_bonus_amount.setText(strBonusAmount);
 //        mAmount = et_adding_amount.getText().toString();
 
     }
@@ -197,6 +202,7 @@ public class WalletFragment extends Fragment {
                     CustomLog.d(Constant.TAG,"callTransactionHistoryApi onResonse success ,, previous wallet amount :"+mUserList.get(0).getWalletAmount());
                     User user= mUserList.get(0);
                     user.setWalletAmount(String.valueOf(response.body().getWallet()));
+                    user.setTotalEarnedRefferals(String.valueOf(response.body().getBonus()));
                     user.save();
 //                    tSharedPrefManager.clearWallet();
 //                    String strUpdatedWallet = String.valueOf(response.body().getWallet());

@@ -16,9 +16,9 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class YouTubeActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
     private YouTubePlayerView mYouTubeView;
-    private final String mKey = "AIzaSyBwXlnVmQ0lUvHjlFJ63hw5otPZYNKtTls";// TODO need to change
+    private final String mKey = "AIzaSyAbpEpaxgiHm4gwyWWGOKX6elUzOJPuTnI";// TODO need to change
     private static final int RECOVERY_REQUEST = 1;
-    private String videoUrl = "https://www.youtube.com/watch?v=giJZAYYrxlQ";
+    private String videoUrl = "https://www.youtube.com/watch?v=uwVKj8z1McA";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -78,7 +78,6 @@ public class JoinAdapter extends RecyclerView.Adapter<JoinAdapter.JoinViewHolder
         } else {
             joinViewHolder.mJoinBtn.setText("Join");
             joinViewHolder.mJoinBtn.setTextColor(mContext.getResources().getColor(R.color.golden));
-            joinViewHolder.mJoinBtn.setBackgroundResource(R.drawable.bg_btn_main);
             joinViewHolder.mJoinBtn.setEnabled(true);
         }
 
