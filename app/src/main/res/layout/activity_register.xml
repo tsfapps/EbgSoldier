@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.earnbygame.ebgsoldier.activity.RegisterActivity">
+    tools:context="com.appslelo.ebgsoldier.activity.RegisterActivity">
     <ScrollView
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                     android:drawableStart="@drawable/ic_golden_user"
                     style="@style/et_login"
                     android:inputType="text"
-                    android:hint="Pub G Username*"
+                    android:hint="PUBG Username*"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -127,7 +127,7 @@
                 <TextView
                     android:id="@+id/tv_reg_forgotPass"
                     android:text="Forgot Password ?\t"
-                    android:textColor="@color/blue"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView

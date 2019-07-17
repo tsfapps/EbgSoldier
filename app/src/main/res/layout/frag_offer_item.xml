@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:padding="@dimen/margin_top"
+        android:layout_margin="@dimen/margin_top"
+        android:orientation="vertical"
+        android:background="@drawable/bg_simple_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+            <TextView
+                android:id="@+id/tvOfferLabel"
+                android:text="@string/offer_amount"
+                android:textColor="@color/golden"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView
+                android:layout_marginStart="@dimen/margin_top"
+                android:layout_toEndOf="@+id/tvOfferLabel"
+                android:id="@+id/tvOfferAmount"
+                android:text="@string/rs_30"
+                android:textColor="@color/golden"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView
+                android:layout_alignParentEnd="true"
+                android:id="@+id/tvOfferDate"
+                android:textColor="@color/colorThemeGolden"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="02 July 2019"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvOfferContent"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/loreum_epsum"
+            />
+        <Button
+            android:layout_marginTop="16dp"
+            android:id="@+id/btnOfferRedeem"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/bg_btn_main"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:paddingEnd="@dimen/margin_top"
+            android:paddingStart="@dimen/margin_top"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="@string/redeem"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

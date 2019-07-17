@@ -31,10 +31,11 @@
     <EditText
         android:id="@+id/withdrawAmount"
         android:inputType="number"
-        android:hint="Amount"
+        android:hint="Redeem Amount"
         style="@style/et_login" />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
+        android:visibility="gone"
         style="@style/EditTextHint">
     <EditText
         android:id="@+id/withdrawAcountNumber"
@@ -43,6 +44,7 @@
         style="@style/et_login" />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
+        android:visibility="gone"
         style="@style/EditTextHint">
     <EditText
         android:id="@+id/withdrawIfsc"

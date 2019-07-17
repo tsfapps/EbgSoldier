@@ -189,7 +189,7 @@
                         <TextView
                             android:textSize="12sp"
                             android:layout_marginLeft="25dp"
-                            android:text="Pub G ID"
+                            android:text="PUBG ID"
                             android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="20dp" />

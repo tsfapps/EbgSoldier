@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "710620407724",
+    "firebase_url": "https://ebgsoldier.firebaseio.com",
+    "project_id": "ebgsoldier",
+    "storage_bucket": "ebgsoldier.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710620407724:android:8f9304e0c6d87222",
+        "android_client_info": {
+          "package_name": "com.appslelo.ebgsoldier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "710620407724-k4bp5cs2nv56tfngekm9eqt8umk9vn7d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbUEszS2o1U_LoqEEOVToU3E94vuosgQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "710620407724-k4bp5cs2nv56tfngekm9eqt8umk9vn7d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

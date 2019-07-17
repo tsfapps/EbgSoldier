@@ -18,7 +18,7 @@
             android:layout_alignParentTop="true"
             android:scaleType="fitXY"
             android:src="@drawable/ebg_logo"
-            android:id="@+id/iv_laundry"
+            android:id="@+id/ivNavProPic"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </android.support.v7.widget.CardView>
@@ -29,6 +29,7 @@
     android:layout_weight="4"
     android:layout_height="wrap_content">
     <TextView
+        android:id="@+id/tvNavName"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +38,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvNavPubgName"
         android:textColor="@color/golden"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

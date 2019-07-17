@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.earnbygame.ebgsoldier">
+    package="com.appslelo.ebgsoldier">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+
 
     <application
         android:allowBackup="true"
@@ -19,7 +19,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         android:name="com.orm.SugarApp"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:icon">
 
         <meta-data android:name="DATABASE"
             android:value="abp_database.db" />
@@ -29,8 +30,14 @@
             android:value="true" />
         <meta-data android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.earnbygame.ebgsoldier" />
+        <service android:name="com.appslelo.ebgsoldier.services.MyFirebaseMessagingService"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
-        <activity android:name=".activity.SplashActivity" >
+        <activity android:name="com.appslelo.ebgsoldier.activity.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,17 +45,21 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".activity.LoginActivity" />
+        <activity android:name="com.appslelo.ebgsoldier.activity.LoginActivity"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.DashActivity"
+            android:name="com.appslelo.ebgsoldier.activity.DashActivity"
             android:label="@string/title_activity_dash"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activity.YouTubeActivity" />
-        <activity android:name=".activity.RegisterActivity"/>
-        <activity android:name=".activity.PaymentActivity"
-            android:launchMode="singleTop"/>
-        <activity android:name=".activity.MatchDetailActivity"/>
+        <activity android:name="com.appslelo.ebgsoldier.activity.RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.appslelo.ebgsoldier.activity.PaymentActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.appslelo.ebgsoldier.activity.MatchDetailActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

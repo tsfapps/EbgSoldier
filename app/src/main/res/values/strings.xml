@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Ebg Soldier</string>
     <string name="title_ref_earn">Earn</string>
-    <string name="title_live">Live</string>
+    <string name="title_mega">Mega</string>
     <string name="title_join">Join</string>
     <string name="title_result">Result</string>
     <string name="title_profile">Profile</string>
@@ -49,4 +49,9 @@ PUBG account of the current season and have HEADSHOT % more than 20%.\n
 
     </string>
     <string name="loreum_epsum">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero\'s De Finibus Bonorum et Malorum for use in a type specimen book.</string>
+    <string name="time_3_00_pm">Time : 3:00 PM</string>
+    <string name="date_20_may_2019">Date : 20 May 2019</string>
+    <string name="redeem">Redeem</string>
+    <string name="rs_30">Rs. 30</string>
+    <string name="offer_amount">Offer Amount :</string>
 </resources>
