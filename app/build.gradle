@@ -6,8 +6,8 @@ android {
         applicationId "com.appslelo.ebgsoldier"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 6
-        versionName "1.6"
+        versionCode 1
+        versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         useLibrary 'org.apache.http.legacy'
     }

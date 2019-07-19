@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "710620407724-thc7on4b8h3h3hserctm72gaa0c5gtte.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appslelo.ebgsoldier",
+            "certificate_hash": "20a1e6b6a3c3448af367cceaf1e52033760ea6c6"
+          }
+        },
+        {
           "client_id": "710620407724-k4bp5cs2nv56tfngekm9eqt8umk9vn7d.apps.googleusercontent.com",
           "client_type": 3
         }
