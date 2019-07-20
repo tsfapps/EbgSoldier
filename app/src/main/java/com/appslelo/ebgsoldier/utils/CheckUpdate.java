@@ -38,7 +38,7 @@ public class CheckUpdate{
 
 
 
-    private static void alertFirUpdate(final Context tContext, String strNewVersion, String strNewVerMessage, final String strApkUrl){
+    private static void alertFirUpdate(final Context tContext, String strNewVersion, String strNewVerMessage){
         String strCurrentVersion = getVersionCode(tContext);
 //        String strNewVersion = "1.2";
         if(Double.parseDouble(strCurrentVersion) < Double.parseDouble(strNewVersion)){
@@ -49,8 +49,9 @@ public class CheckUpdate{
                     .setPositiveButton("Update Now", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
 
-                            CustomLog.d(Constant.TAG, "Apk Url : "+strApkUrl);
-                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(strApkUrl));
+                            String strUrl = "https://www.ebgsoldier.com";
+                            CustomLog.d(Constant.TAG, "Apk Url : "+strUrl);
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(strUrl));
                             tContext.startActivity(intent);
 
                         }
@@ -75,8 +76,7 @@ public class CheckUpdate{
                 int size= tModels.size()-1;
                String strNewVerName = tModels.get(size).getVerName();
                String strNewVerMessage = tModels.get(size).getUpdateMsg();
-               String strApkUrl= tModels.get(size).getApkUrl();
-                alertFirUpdate(tContext, strNewVerName,  strNewVerMessage, strApkUrl);
+                alertFirUpdate(tContext, strNewVerName,  strNewVerMessage);
             }
 
             @Override

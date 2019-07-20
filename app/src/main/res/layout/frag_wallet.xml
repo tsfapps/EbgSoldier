@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:orientation="vertical"
-    android:gravity="center"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_main_front"
+    android:background="@drawable/bg_main_screen"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:background="@drawable/bg_drawer_transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
             android:layout_marginStart="16dp"
@@ -157,5 +162,5 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/ll_adding_amountLayout"
             android:layout_margin="24dp"/>
-
+    </LinearLayout>
 </LinearLayout>

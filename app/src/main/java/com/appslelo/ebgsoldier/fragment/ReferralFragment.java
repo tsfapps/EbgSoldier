@@ -111,7 +111,7 @@ public class ReferralFragment extends Fragment {
     @OnClick({R.id.iv_fb,R.id.iv_whatsApp,R.id.iv_more})
     public void onClick(View v) {
         String strMessage = "Install ebgsoldier and register by using my mentioned referal code to earn wallet amount. My referral code is : ";
-        String strLink = ".\nDownload the App by this link "+"http://play.google.com/store/apps/details?id=" + activity.getPackageName();
+        String strLink = ".\nDownload the App by this link "+"https://www.ebgsoldier.com";
         try {
             switch (v.getId()) {
                 case R.id.iv_fb:

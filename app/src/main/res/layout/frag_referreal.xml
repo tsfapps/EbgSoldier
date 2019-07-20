@@ -2,12 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_main_front">
+    android:background="@drawable/bg_main_screen">
     <android.support.v4.widget.NestedScrollView
-        android:background="@drawable/bg_simple_transparent"
+        android:background="@drawable/bg_drawer_transparent"
         android:layout_marginEnd="@dimen/margin_top"
         android:layout_marginStart="@dimen/margin_top"
         android:layout_centerInParent="true"

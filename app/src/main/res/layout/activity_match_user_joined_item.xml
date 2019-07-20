@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:layout_marginTop="@dimen/margin_top"
-    android:background="@drawable/bg_simple_transparent"
+    android:background="@drawable/bg_drawer_transparent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"

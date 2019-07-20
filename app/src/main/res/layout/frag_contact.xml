@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical"
-    android:background="@drawable/bg_main_front"
-    android:gravity="center_horizontal"
+    android:background="@drawable/bg_main_screen"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:background="@drawable/bg_drawer_transparent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_margin="@dimen/margin_top"
@@ -32,10 +37,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     </android.support.v7.widget.CardView>
-    <android.support.design.widget.TextInputLayout
-    style="@style/EditTextHint"
-    android:layout_margin="@dimen/margin_top">
+
     <EditText
+        android:layout_margin="@dimen/margin_top"
         android:id="@+id/et_contactUs"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -49,7 +53,6 @@
         android:minLines="12"
         android:maxLength="200"
        />
-</android.support.design.widget.TextInputLayout>
 
     <Button
         android:layout_marginStart="@dimen/margin_top"
@@ -57,4 +60,5 @@
         android:id="@+id/btn_submitContact"
         style="@style/btn_main"
         android:text="Submit" />
+    </LinearLayout>
 </LinearLayout>

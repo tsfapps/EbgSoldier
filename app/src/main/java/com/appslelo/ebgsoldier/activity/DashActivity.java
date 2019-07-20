@@ -336,8 +336,8 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
                     Intent shareIntent = new Intent(Intent.ACTION_SEND);
                     shareIntent.setType("text/plain");
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT, "EBG Soldier");
-                    String shareMessage= "\nLet me recommend you this application\n\n";
-                    shareMessage = shareMessage + ""+"\n\n";
+                    String shareMessage= "\nDownload the application through given link.\n\n";
+                    shareMessage = shareMessage + "https://www.ebgsoldier.com"+"\n\n";
                     shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
                     startActivity(Intent.createChooser(shareIntent, "choose one"));
                 } catch(Exception e) {

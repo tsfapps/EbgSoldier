@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-
     android:orientation="vertical"
-    android:background="@drawable/bg_main_front"
+    android:background="@drawable/bg_main_screen"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,12 +10,13 @@
     android:layout_centerInParent="true"
     tools:context=".activity.LoginActivity">
     <ScrollView
+        android:background="@drawable/bg_drawer_transparent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         >
         <LinearLayout
-            android:layout_gravity="center"
+            android:layout_gravity="bottom"
             android:background="@drawable/bg_simple_transparent"
             android:layout_margin="@dimen/margin_top"
             android:padding="20dp"
@@ -26,6 +26,7 @@
             android:layout_height="wrap_content">
 
             <android.support.v7.widget.CardView
+                android:visibility="gone"
                 android:layout_margin="4dp"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
@@ -39,17 +40,19 @@
                     android:layout_height="match_parent" />
             </android.support.v7.widget.CardView>
             <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="350dp"
                style="@style/EditTextHint" >
                 <EditText
                     android:id="@+id/et_user_name"
                     android:drawableStart="@drawable/ic_golden_phone"
                     style="@style/et_login"
-                    android:inputType="textPersonName"
-                    android:hint="PUBG Username"
+                    android:inputType="phone"
+                    android:hint="Phone Number"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorThemeGolden"
                 style="@style/EditTextHint" >
                 <EditText
                     android:drawableStart="@drawable/ic_golden_password"

@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:orientation="vertical"
-    android:background="@drawable/bg_main_front"
+    android:background="@drawable/bg_main_screen"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:background="@drawable/bg_drawer_transparent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
         android:id="@+id/llMatchResultMain"
-        android:background="@drawable/bg_simple_transparent"
         android:orientation="vertical"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_marginTop="8dp"
@@ -222,4 +226,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     </RelativeLayout>
+</LinearLayout>
 </LinearLayout>

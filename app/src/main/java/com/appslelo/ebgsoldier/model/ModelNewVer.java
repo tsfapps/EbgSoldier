@@ -13,9 +13,7 @@ public class ModelNewVer {
     @SerializedName("update_msg")
     @Expose
     private String updateMsg;
-    @SerializedName("apk_url")
-    @Expose
-    private String apkUrl;
+
 
     public String getId() {
         return id;
@@ -41,11 +39,4 @@ public class ModelNewVer {
         this.updateMsg = updateMsg;
     }
 
-    public String getApkUrl() {
-        return apkUrl;
-    }
-
-    public void setApkUrl(String apkUrl) {
-        this.apkUrl = apkUrl;
-    }
 }
