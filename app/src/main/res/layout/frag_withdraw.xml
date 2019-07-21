@@ -32,6 +32,7 @@
         android:id="@+id/withdrawAmount"
         android:inputType="number"
         android:hint="Redeem Amount"
+        android:maxLength="4"
         style="@style/et_login" />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
@@ -65,6 +66,7 @@
         android:id="@+id/withdrawPayTm"
         android:inputType="phone"
         android:hint="Paytm Number"
+        android:maxLength="10"
         style="@style/et_login" />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
@@ -72,6 +74,7 @@
     <EditText
         android:inputType="phone"
         android:id="@+id/withdrawGooglePay"
+        android:maxLength="10"
         android:hint="Google Pay Number"
         style="@style/et_login" />
     </android.support.design.widget.TextInputLayout>

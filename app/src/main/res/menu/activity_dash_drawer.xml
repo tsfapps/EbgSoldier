@@ -29,10 +29,6 @@
             android:icon="@drawable/ic_live"
             android:title="@string/matches_on_youtube" />
         <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_details"
-            android:title="@string/about_ebg_soldier" />
-        <item
             android:id="@+id/nav_faq"
             android:icon="@drawable/ic_faq"
             android:title="@string/faq" />
@@ -44,14 +40,15 @@
             android:id="@+id/nav_terms"
             android:icon="@drawable/ic_terms"
             android:title="@string/terms_and_condition" />
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/share" />
+
     </group>
 
-    <item android:title="@string/communicate">
+    <item android:title="">
         <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/share" />
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_pro_logout"

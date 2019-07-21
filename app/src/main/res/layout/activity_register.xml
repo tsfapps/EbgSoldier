@@ -53,7 +53,7 @@
                     android:drawableStart="@drawable/ic_golden_user"
                     style="@style/et_login"
                     android:inputType="text"
-                    android:hint="PUBG Username*"
+                    android:hint="PUBG Username"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -80,17 +80,19 @@
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorThemeGolden"
                 style="@style/EditTextHint" >
                 <EditText
                     android:drawableStart="@drawable/ic_golden_password"
                     android:id="@+id/et_reg_pass"
                     style="@style/et_login"
                     android:inputType="textWebPassword"
-                    android:hint="Password"
+                    android:hint="Password*"
                     />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorThemeGolden"
                 style="@style/EditTextHint">
                 <EditText
                     android:drawableStart="@drawable/ic_golden_password"

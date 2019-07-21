@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.appslelo.ebgsoldier.R;
 import com.appslelo.ebgsoldier.model.ModelRegister;
 import com.appslelo.ebgsoldier.presenter.PresenterRegister;
+import com.appslelo.ebgsoldier.utils.CustomToast;
+import com.appslelo.ebgsoldier.utils.Validate;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,10 +78,40 @@ public class RegisterActivity extends AppCompatActivity {
         mPassword = mRegPassword.getText().toString();
         mPasswordCheck = mRegPasswordCheck.getText().toString();
         mReferCode = mRegReferCode.getText().toString();
-        if (mPassword.equals(mPasswordCheck)) {
-            new PresenterRegister(RegisterActivity.this, mName, mPgUserName, mPhoneNo, mEmailId, mPasswordCheck, mReferCode, mProfilePic);
-        } else {
+        if (mName.equalsIgnoreCase("")){
+            mRegName.setError("Enter your Name");
+            CustomToast.tToastTop(getApplicationContext(), "Enter your name");
+        }
+        else if (mPhoneNo.equalsIgnoreCase("")){
+            mRegPhoneNo.setError("Enter mobile number");
+
+            CustomToast.tToastTop(getApplicationContext(), "Enter mobile number");
+        }
+        else if (!Validate.isValidMobile(mPhoneNo)){
+            mRegPhoneNo.setError("Enter a valid mobile number");
+            CustomToast.tToastTop(getApplicationContext(), "Enter a valid mobile number");
+        }
+        else if (mEmailId.equalsIgnoreCase("")){
+            mRegEmail.setError("Enter email id");
+
+            CustomToast.tToastTop(getApplicationContext(), "Enter mobile number");
+        }
+        else if (!Validate.isValidMail(mEmailId)){
+            mRegEmail.setError("Enter a valid email id");
+            CustomToast.tToastTop(getApplicationContext(), "Enter a valid email id");
+        }
+        else if (mPassword.equalsIgnoreCase("")){
+            mRegPassword.setError("Enter Password");
+
+            CustomToast.tToastTop(getApplicationContext(), "Enter Password");
+        }
+       else if (!mPassword.equals(mPasswordCheck)) {
             mRegPasswordCheck.setError("Password not match");
+            CustomToast.tToastTop(getApplicationContext(), "Password not match");
+
+        } else {
+            new PresenterRegister(RegisterActivity.this, mName, mPgUserName, mPhoneNo, mEmailId, mPasswordCheck, mReferCode, mProfilePic);
+
         }
     }
 

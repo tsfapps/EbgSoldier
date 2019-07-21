@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.appslelo.ebgsoldier.R;
 import com.appslelo.ebgsoldier.storage.SharedPrefManager;
+import com.appslelo.ebgsoldier.utils.CustomDialogs;
 
 public class SplashActivity extends AppCompatActivity {
 

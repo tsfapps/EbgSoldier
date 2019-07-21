@@ -19,6 +19,7 @@ import com.appslelo.ebgsoldier.api.Api;
 import com.appslelo.ebgsoldier.api.ApiClients;
 import com.appslelo.ebgsoldier.model.ModelJoinMatch;
 import com.appslelo.ebgsoldier.storage.SharedPrefManager;
+import com.appslelo.ebgsoldier.utils.CustomDialogs;
 
 import java.util.List;
 
@@ -73,6 +74,7 @@ public class JoinFragment extends Fragment {
 
             }
         });
+
 
 
     }

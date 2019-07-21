@@ -13,18 +13,16 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimaryDark"
             app:popupTheme="@style/AppTheme.PopupOverlay">
             <RelativeLayout
-                android:layout_marginEnd="2dp"
                 android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
                     android:layout_centerVertical="true"
-
                     android:id="@+id/tvToolbar"
                     android:text="@string/app_name"
                     android:gravity="center"

@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,6 +57,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -62,6 +65,7 @@ import retrofit2.Response;
 public class DashActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private FragmentManager mFragmentManager;
     private SharedPrefManager tSharedPrefManager;
+    private Context tContext;
     private String strBonusAmount;
     private String strWalletAmount;
 
@@ -84,7 +88,8 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_dash);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        CheckUpdate.checkUpdateApi(DashActivity.this);
+        tContext = DashActivity.this;
+        CheckUpdate.checkUpdateApi(tContext);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -92,7 +97,7 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         mFragmentManager = getSupportFragmentManager();
 
-        tSharedPrefManager = new SharedPrefManager(getApplicationContext());
+        tSharedPrefManager = new SharedPrefManager(tContext);
         init();
 
     }
@@ -268,26 +273,7 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.dash, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        if (id == R.id.menu_exit) {
-            finish();
-            System.exit(0);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -346,7 +332,36 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_logout:
-                logoutUser();
+
+                final SweetAlertDialog alertDialog = new SweetAlertDialog(tContext, SweetAlertDialog.WARNING_TYPE);
+                alertDialog.setTitleText("Logout");
+                alertDialog.setCancelText("Cancel");
+                alertDialog.setCancelClickListener( new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+//                Config.moveTo(context, LoginActivity.class);
+                        alertDialog.dismissWithAnimation();
+
+                    }
+                });
+                alertDialog.setConfirmText("Logout");
+                alertDialog.setConfirmClickListener( new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+//                Config.moveTo(context, SignUp.class);
+                        logoutUser();
+                    }
+                });
+                alertDialog.setContentText("Are you sure want to logout ???");
+                alertDialog.show();
+                Button btn = alertDialog.findViewById(R.id.confirm_button);
+                btn.setBackgroundColor(ContextCompat.getColor(tContext, R.color.colorPrimary));
+                Button btn1 = alertDialog.findViewById(R.id.cancel_button);
+                btn1.setBackgroundColor(ContextCompat.getColor(tContext, R.color.colorPrimary));
+
+
+
+
                 break;
 
         }

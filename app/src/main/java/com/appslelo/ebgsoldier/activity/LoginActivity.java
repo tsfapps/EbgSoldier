@@ -13,6 +13,8 @@ import com.appslelo.ebgsoldier.R;
 import com.appslelo.ebgsoldier.model.login.ModelLogin;
 import com.appslelo.ebgsoldier.presenter.PresenterLogin;
 import com.appslelo.ebgsoldier.storage.SharedPrefManager;
+import com.appslelo.ebgsoldier.utils.CustomToast;
+import com.appslelo.ebgsoldier.utils.Validate;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,13 +28,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private SharedPrefManager tSharedPrefManager;
 
-    @BindView(R.id.et_user_name)
-    protected EditText mEtUserName;
+    @BindView(R.id.etPhoneNumber)
+    protected EditText etPhoneNumber;
     @BindView(R.id.et_login_pass)
-    protected EditText mEtPassword;
-
-    private String mUserName = null;
-    private String mPassword = null;
+    protected EditText etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,10 +68,26 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void callLoginApi(){
-        mUserName = mEtUserName.getText().toString();
-        mPassword = mEtPassword.getText().toString();
-        if (mUserName != null && mPassword != null) {
-            new PresenterLogin(LoginActivity.this,mUserName,mPassword);
+        String strPhoneNumber = etPhoneNumber.getText().toString();
+        String strPassword = etPassword.getText().toString();
+        if (strPhoneNumber.equalsIgnoreCase("")){
+            etPhoneNumber.setError("Enter mobile number");
+
+            CustomToast.tToastTop(getApplicationContext(), "Enter mobile number");
+        }
+       else if (!Validate.isValidMobile(strPhoneNumber)){
+            etPhoneNumber.setError("Enter a valid mobile number");
+            CustomToast.tToastTop(getApplicationContext(), "Enter a valid mobile number");
+        }
+        else if (strPassword.equalsIgnoreCase(""))
+        {
+            etPassword.setError("Enter the password");
+
+            CustomToast.tToastTop(getApplicationContext(), "Enter the password");
+
+        }else {
+            new PresenterLogin(LoginActivity.this, strPhoneNumber, strPassword);
+
         }
     }
     private void sendMail(){
