@@ -89,6 +89,19 @@ public class SharedPrefManager {
         tEditor.remove(Constant.USER_TOTAL_KILL);
         tEditor.apply();
     }
+    public void clearPubgName(){
+        SharedPreferences sharedPreferences = tContext.getSharedPreferences(Constant.TSF_SHARED_PREFENCE, Context.MODE_PRIVATE);
+        tEditor = sharedPreferences.edit();
+        tEditor.remove(Constant.USER_PUBG_NAME);
+        tEditor.apply();
+    }
+    public void setPubgName(String strPubgName){
+        SharedPreferences tSharedPreferences = tContext.getSharedPreferences(Constant.TSF_SHARED_PREFENCE, Context.MODE_PRIVATE);
+        tEditor = tSharedPreferences.edit();
+        tEditor.putString(Constant.USER_PUBG_NAME, strPubgName);
+        tEditor.apply();
+    }
+
     public void clearUserEared(){
         SharedPreferences sharedPreferences = tContext.getSharedPreferences(Constant.TSF_SHARED_PREFENCE, Context.MODE_PRIVATE);
         tEditor = sharedPreferences.edit();
@@ -171,7 +184,7 @@ public class SharedPrefManager {
         SharedPreferences sp = tContext.getSharedPreferences(Constant.TSF_SHARED_PREFENCE, Context.MODE_PRIVATE);
        return sp.getString(Constant.USER_DOB, Constant.EMPTY);
     }
-    public String getUserPhone(){
+    public String getMobile(){
         SharedPreferences sp = tContext.getSharedPreferences(Constant.TSF_SHARED_PREFENCE, Context.MODE_PRIVATE);
        return sp.getString(Constant.USER_PHONE_NO, Constant.EMPTY);
     }

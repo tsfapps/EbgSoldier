@@ -13,8 +13,7 @@
         android:background="@drawable/bg_drawer_transparent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        >
+        android:fillViewport="true">
         <LinearLayout
             android:layout_gravity="bottom"
             android:background="@drawable/bg_simple_transparent"
@@ -25,20 +24,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.v7.widget.CardView
-                android:visibility="gone"
-                android:layout_margin="4dp"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                app:cardCornerRadius="60dp">
+
                 <ImageView
                     android:layout_alignParentTop="true"
                     android:scaleType="fitXY"
                     android:src="@drawable/ebg_logo"
                     android:id="@+id/iv_laundry"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </android.support.v7.widget.CardView>
+                    android:layout_height="100dp" />
+
             <android.support.design.widget.TextInputLayout
                 android:layout_marginTop="350dp"
                style="@style/EditTextHint" >

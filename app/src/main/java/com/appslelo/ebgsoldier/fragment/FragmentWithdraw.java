@@ -2,11 +2,13 @@ package com.appslelo.ebgsoldier.fragment;
 
 import android.content.Context;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +16,20 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.appslelo.ebgsoldier.R;
+import com.appslelo.ebgsoldier.activity.DashActivity;
 import com.appslelo.ebgsoldier.api.Api;
 import com.appslelo.ebgsoldier.api.ApiClients;
 import com.appslelo.ebgsoldier.model.ModelWithdraw;
 import com.appslelo.ebgsoldier.storage.SharedPrefManager;
 import com.appslelo.ebgsoldier.utils.Constant;
+import com.appslelo.ebgsoldier.utils.CustomDialogs;
 import com.appslelo.ebgsoldier.utils.CustomLog;
 import com.appslelo.ebgsoldier.utils.CustomToast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +40,7 @@ public class FragmentWithdraw extends Fragment {
     private SharedPrefManager tSharedPrefManager;
     private Context tContext;
     private String strUserId;
+    private String strMobile;
     private String strWalletAmount;
     @BindView(R.id.withdrawAmount)
     protected EditText withdrawAmount;
@@ -64,7 +70,10 @@ public class FragmentWithdraw extends Fragment {
         tSharedPrefManager = new SharedPrefManager(tContext);
         tFragmentManager = getFragmentManager();
         strUserId = tSharedPrefManager.getUserId();
+        strMobile = tSharedPrefManager.getMobile();
         strWalletAmount = tSharedPrefManager.getUserWallet();
+        withdrawPayTm.setText(strMobile);
+        withdrawGooglePay.setText(strMobile);
     }
 
     private void callApi(String strAmount){
@@ -74,27 +83,53 @@ public class FragmentWithdraw extends Fragment {
         String strUpiId = withdrawUpiId.getText().toString().trim();
         String strPaytm = withdrawPayTm.getText().toString().trim();
         String strGooglePay = withdrawGooglePay.getText().toString().trim();
-        Api api = ApiClients.getApiClients().create(Api.class);
-        Call<ModelWithdraw> call = api.widthdraws(strUserId,strAmount,strAccount,strIfsc,strUpiId,strPaytm,strGooglePay);
-        call.enqueue(new Callback<ModelWithdraw>() {
-            @Override
-            public void onResponse(Call<ModelWithdraw> call, Response<ModelWithdraw> response) {
-                ModelWithdraw tModel = response.body();
-                CustomToast.tToastTop(tContext, tModel.getMessage());
-                tFragmentManager.beginTransaction().replace(R.id.frame_container, new FragmentWithdraw()).commit();
-            }
 
-            @Override
-            public void onFailure(Call<ModelWithdraw> call, Throwable t) {
+        if (strUpiId.equalsIgnoreCase("")&&strGooglePay.equalsIgnoreCase("")&&strPaytm.equalsIgnoreCase("")){
+            CustomDialogs.customDialogError(tContext, "Give at least one of payment mode",
+                    "UPI Id, Google Pay, or Paytm Number. If you don't have any of this then mail us on ebgsoldier@gmail.com to withdraw the amount", "Okay");
+        }
+        else {
+            Api api = ApiClients.getApiClients().create(Api.class);
+            Call<ModelWithdraw> call = api.widthdraws(strUserId,strMobile, strAmount, strAccount, strIfsc, strUpiId, strPaytm, strGooglePay);
+            call.enqueue(new Callback<ModelWithdraw>() {
+                @Override
+                public void onResponse(Call<ModelWithdraw> call, Response<ModelWithdraw> response) {
+                    ModelWithdraw tModel = response.body();
+                    CustomToast.tToastTop(tContext, tModel.getMessage());
+                    tSharedPrefManager.setUserWallet(tModel.getWallet().toString());
 
-                CustomLog.d(Constant.TAG, "Withdraw Failure : "+t);
-            }
-        });
+                    final SweetAlertDialog alertDialog = new SweetAlertDialog(tContext,  SweetAlertDialog.SUCCESS_TYPE);
+                    alertDialog.setTitleText("Success");
+                    alertDialog.setConfirmText("Thanks");
+                    alertDialog.setConfirmClickListener( new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                            alertDialog.dismissWithAnimation();
+                            startActivity(new Intent(tContext, DashActivity.class));
+                            getActivity().finishAffinity();
+                        }
+                    });
+                    alertDialog.setContentText("Your request submitted successfully. It will take 24 hrs to update your account.");
+                    alertDialog.show();
+                    Button btn = alertDialog.findViewById(R.id.confirm_button);
+                    btn.setBackgroundColor(ContextCompat.getColor(tContext, R.color.colorPrimary));
+                    alertDialog.setCancelable(false);
+
+                }
+
+                @Override
+                public void onFailure(Call<ModelWithdraw> call, Throwable t) {
+
+                    CustomLog.d(Constant.TAG, "Withdraw Failure : " + t);
+                }
+            });
+        }
     }
 
     @OnClick(R.id.btnWithdrawSubmit)
     public void btnWithdrawSubmitClicked(View view){
-        String strAmount = withdrawAmount.getText().toString().trim();
+        final String strAmount = withdrawAmount.getText().toString().trim();
         if (!strAmount.equalsIgnoreCase("")) {
             int intAmount = Integer.parseInt(strAmount);
             int intWalletAmount = Integer.parseInt(strWalletAmount);
@@ -106,7 +141,33 @@ public class FragmentWithdraw extends Fragment {
                 withdrawAmount.setError("Wallet amount must be greater than ₹40");
                 return;
             }
-                callApi(strAmount);
+            final SweetAlertDialog alertDialog = new SweetAlertDialog(tContext, SweetAlertDialog.WARNING_TYPE);
+            alertDialog.setTitleText("Confirm to Submit");
+            alertDialog.setCancelText("Cancel");
+            alertDialog.setCancelClickListener( new SweetAlertDialog.OnSweetClickListener() {
+                @Override
+                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    alertDialog.dismissWithAnimation();
+
+                }
+            });
+            alertDialog.setConfirmText("Submit");
+            alertDialog.setConfirmClickListener( new SweetAlertDialog.OnSweetClickListener() {
+                @Override
+                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    alertDialog.dismissWithAnimation();
+                    callApi(strAmount);
+                }
+            });
+
+                alertDialog.setContentText("Be sure about the detail you are providing are correct. Once submitted can't be undone.");
+            alertDialog.show();
+            Button btn =  alertDialog.findViewById(R.id.confirm_button);
+            btn.setBackgroundColor(ContextCompat.getColor(tContext, R.color.colorPrimary));
+            Button btn1 =  alertDialog.findViewById(R.id.cancel_button);
+            btn1.setBackgroundColor(ContextCompat.getColor(tContext, R.color.colorPrimary));
+            alertDialog.setCancelable(false);
+
         }
         else {
             withdrawAmount.setError("Enter the withdraw amount ... ");

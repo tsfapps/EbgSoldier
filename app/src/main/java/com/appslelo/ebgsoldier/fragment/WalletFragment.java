@@ -114,7 +114,7 @@ public class WalletFragment extends Fragment {
 
             mCustId =tSharedPrefManager.getUserId();
             mEmail = tSharedPrefManager.getUserEmail();
-            mMobile = tSharedPrefManager.getUserPhone();
+            mMobile = tSharedPrefManager.getMobile();
 
 
         checkReadSmsPermission();

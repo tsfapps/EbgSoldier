@@ -1,5 +1,6 @@
 package com.appslelo.ebgsoldier.utils;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
@@ -13,18 +14,6 @@ import java.util.Locale;
 public class DateUtils {
 
 
-    public static long dateToMiliSeconds(String strDate){
-        String myDate = strDate;
-        SimpleDateFormat sdf = new SimpleDateFormat(Constant.DATE_FORMAT_dd_MMMM_yyyy, Locale.UK);
-        Date date = null;
-        try {
-            date = sdf.parse(myDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return date.getTime();
-
-    }
 
     public static String getTodayDate() {
         Date c = Calendar.getInstance().getTime();
@@ -60,6 +49,19 @@ public class DateUtils {
         SimpleDateFormat df = new SimpleDateFormat(Constant.TIME_FORMAT_hh_mm, Locale.getDefault());
         String currentTime = df.format(c);
         return currentTime;
+
+    }
+    public static long convertTimeToMilisecond(String strDate) {
+
+//        String myDate = "2014/10/29 18:10:45";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+        Date date = null;
+        try {
+            date = sdf.parse(strDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+       return date.getTime();
 
     }
     public static Boolean compareDate(String valid_until) {
@@ -108,5 +110,64 @@ public class DateUtils {
 
 
 
+    public static boolean isExpire(String date){
+        if(date.isEmpty() || date.trim().equals("")){
+            return false;
+        }else{
+            SimpleDateFormat sdf =  new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+            Date d;
+            Date d1;
+            String today=getToday();
+            try {
+
+                d = sdf.parse(date);
+                d1 = sdf.parse(today);
+                if(d1.compareTo(d) <0){// not expired
+                    return false;
+                }else if(d.compareTo(d1)==0){// both date are same
+                    if(d.getTime() < d1.getTime()){// not expired
+                        return false;
+                    }else if(d.getTime() == d1.getTime()){//expired
+                        return true;
+                    }else{//expired
+                        return true;
+                    }
+                }else{//expired
+                    return true;
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+    }
+    @SuppressLint("SimpleDateFormat")
+    private static String getToday() {
+        Date date = new Date();
+        return new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date);
+
+
+    }
+
+    public static String getCurrentDateTime() {
+        Date date = new Date();
+//        return new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        return new SimpleDateFormat(Constant.DATE_FORMAT_yyyy_MM_dd_HH_mm_ss, Locale.UK).format(date);
+    }
+
+
+
+    public static long dateToMiliSeconds(String strDate){
+        String myDate = strDate;
+        SimpleDateFormat sdf = new SimpleDateFormat(Constant.DATE_FORMAT_yyyy_MM_dd_HH_mm_ss, Locale.UK);
+        Date date = null;
+        try {
+            date = sdf.parse(myDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date.getTime();
+
+    }
 
 }

@@ -15,7 +15,7 @@
         android:layout_height="50dp"
         app:cardCornerRadius="25dp">
         <ImageView
-            android:src="@mipmap/ebg_logo"
+            android:src="@drawable/ebg_logo_black"
             android:id="@+id/ivJoinedUserProPic"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

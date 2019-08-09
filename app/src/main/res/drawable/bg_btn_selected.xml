@@ -3,7 +3,8 @@
     <item android:state_pressed="true" >
         <shape>
             <solid
-                android:color="@color/colorThemeDark" />
+                android:color="@color/colorThemeGolden"
+                />
             <stroke
                 android:width=".5dp"
                 android:color="@color/colorPrimaryDark" />
@@ -14,7 +15,8 @@
     <item>
         <shape>
             <solid
-                android:color="@color/colorThemeGolden" />
+                android:color="@color/colorThemeDark"
+                />
             <stroke
                 android:width=".5dp"
                 android:color="@color/white" />

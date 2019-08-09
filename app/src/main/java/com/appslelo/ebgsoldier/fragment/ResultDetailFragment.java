@@ -18,6 +18,7 @@ import com.appslelo.ebgsoldier.api.Api;
 import com.appslelo.ebgsoldier.api.ApiClients;
 import com.appslelo.ebgsoldier.model.ModelMatchResult;
 import com.appslelo.ebgsoldier.model.ModelMatchResultDetail;
+import com.appslelo.ebgsoldier.utils.DateUtils;
 
 import java.util.List;
 
@@ -72,9 +73,12 @@ public class ResultDetailFragment extends Fragment {
         tContext = getContext();
         tLayoutManager = new LinearLayoutManager(tContext);
         rv_resultDetail.setLayoutManager(tLayoutManager);
+
+        String strDate = DateUtils.ddMMMMyyyy(tModelMatchResult.getMatchDate());
+        String strTime = DateUtils.hhmm(tModelMatchResult.getMatchDate());
         tvResultDetailName.setText(tModelMatchResult.getMatchName());
-        tvResultDetailDate.setText(tModelMatchResult.getMatchDate());
-        tvResultDetailTime.setText(tModelMatchResult.getMatchTime());
+        tvResultDetailDate.setText(strDate);
+        tvResultDetailTime.setText(strTime);
         tvResultDetailFirstPrize.setText(tModelMatchResult.getFirstPrize());
         tvResultDetailPerKill.setText(tModelMatchResult.getPerKillPrize());
         tvResultDetailEntryFees.setText(tModelMatchResult.getEntryFee());

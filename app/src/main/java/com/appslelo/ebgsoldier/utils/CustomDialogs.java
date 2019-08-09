@@ -11,8 +11,25 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class CustomDialogs{
 
-    public static void customDialogPos(Context tContext, String strTitle, String strMsg, String strBtnTxt) {
+    public static void customDialogSuccess(Context tContext, String strTitle, String strMsg, String strBtnTxt) {
         final SweetAlertDialog alertDialog = new SweetAlertDialog(tContext,  SweetAlertDialog.SUCCESS_TYPE);
+        alertDialog.setTitleText(strTitle);
+        alertDialog.setConfirmText(strBtnTxt);
+        alertDialog.setConfirmClickListener( new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                alertDialog.dismissWithAnimation();
+            }
+        });
+        alertDialog.setContentText(strMsg);
+        alertDialog.show();
+        Button btn = alertDialog.findViewById(R.id.confirm_button);
+        btn.setBackgroundColor(ContextCompat.getColor(tContext, R.color.colorPrimary));
+
+    }
+    public static void customDialogError(Context tContext, String strTitle, String strMsg, String strBtnTxt) {
+        final SweetAlertDialog alertDialog = new SweetAlertDialog(tContext,  SweetAlertDialog.ERROR_TYPE);
         alertDialog.setTitleText(strTitle);
         alertDialog.setConfirmText(strBtnTxt);
         alertDialog.setConfirmClickListener( new SweetAlertDialog.OnSweetClickListener() {

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,8 +55,19 @@ public class MegaAdapter extends RecyclerView.Adapter<MegaAdapter.LiveViewHolder
         } else {
             liveViewHolder.iv_match_pic.setVisibility(View.GONE);
         }
+
+
+        String strRealDate = tModel.getMatchDate();
+        String strCurrentTime = DateUtils.getCurrentDateTime();
+
+        long realDate = DateUtils.dateToMiliSeconds(strRealDate);
+        long currentDate = DateUtils.dateToMiliSeconds(strCurrentTime);
+
         String strDate = DateUtils.ddMMMMyyyy(tModel.getMatchDate());
         String strTime = DateUtils.hhmm(tModel.getMatchDate());
+        int joinedNumber = Integer.parseInt(tModel.getTotalJoined());
+
+
         liveViewHolder.tv_matchJoin_gameName.setText(tModel.getMatchName());
         liveViewHolder.tv_matchJoin_date.setText("Date : "+strDate);
         liveViewHolder.tv_matchJoin_time.setText("Time : "+strTime);
@@ -74,14 +86,30 @@ public class MegaAdapter extends RecyclerView.Adapter<MegaAdapter.LiveViewHolder
 
         if (tModel.getJoinedStatus().equals("1")){
             liveViewHolder.btnMegaJoin.setText("Joined");
-            liveViewHolder.btnMegaJoin.setTextColor(mContext.getResources().getColor(R.color.white));
+            liveViewHolder.btnMegaJoin.setTextColor(mContext.getResources().getColor(R.color.black));
             liveViewHolder.btnMegaJoin.setBackgroundResource(R.drawable.bg_btn_selected);
             liveViewHolder.btnMegaJoin.setEnabled(false);
         } else {
             liveViewHolder.btnMegaJoin.setText("Join");
-            liveViewHolder.btnMegaJoin.setTextColor(mContext.getResources().getColor(R.color.golden));
+            liveViewHolder.btnMegaJoin.setTextColor(mContext.getResources().getColor(R.color.white));
             liveViewHolder.btnMegaJoin.setEnabled(true);
         }
+
+        if (joinedNumber>=100){
+            liveViewHolder.btnMegaJoin.setText("Match Full");
+            liveViewHolder.btnMegaJoin.setTextColor(mContext.getResources().getColor(R.color.black));
+            liveViewHolder.btnMegaJoin.setBackgroundResource(R.drawable.bg_btn_selected);
+            liveViewHolder.btnMegaJoin.setEnabled(false);
+
+        }
+        if (currentDate>=realDate){
+            liveViewHolder.btnMegaJoin.setText("Match Started");
+            liveViewHolder.btnMegaJoin.setTextColor(mContext.getResources().getColor(R.color.black));
+            liveViewHolder.btnMegaJoin.setBackgroundResource(R.drawable.bg_btn_selected);
+            liveViewHolder.btnMegaJoin.setEnabled(false);
+
+        }
+
         liveViewHolder.btnMegaJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

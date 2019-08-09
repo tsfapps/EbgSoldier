@@ -16,12 +16,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.appslelo.ebgsoldier.model.ModelApkUrl;
 import com.bumptech.glide.Glide;
@@ -63,6 +65,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DashActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    private long lastPressedTime;
+    private static final int PERIOD = 2000;
     private FragmentManager mFragmentManager;
     private SharedPrefManager tSharedPrefManager;
     private Context tContext;
@@ -273,9 +278,24 @@ public class DashActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+//            switch (event.getAction()) {
+//                case KeyEvent.ACTION_DOWN:
+//                    if (event.getDownTime() - lastPressedTime < PERIOD) {
+//                        finish();
+//                    } else {
+//                        Toast.makeText(getApplicationContext(), "Press again to exit.",
+//                                Toast.LENGTH_SHORT).show();
+//                        lastPressedTime = event.getEventTime();
+//                    }
+//                    return true;
+//            }
+//        }
+//        return false;
+//    }
 
-
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.

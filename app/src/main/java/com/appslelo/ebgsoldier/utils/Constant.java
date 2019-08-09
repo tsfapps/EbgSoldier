@@ -6,8 +6,10 @@ public class Constant {
     public static final String TAG = "tsfapps";
     public static final String YOUTUBE_LINK = "youtube_link";
     public static final String YOUTUBE_URL = "https://www.youtube.com/watch?v=";
+    public static final String FORGOT_PASS_LINK = "https://www.ebgsoldier.com/forgot_password/password_forgot.php";
     public static final String IMAGE_URL = "http://earnbygame.com/uploads/match_image/";
     public static final String DATE_FORMAT_dd_MMMM_yyyy = "dd MMMM yyyy";
+    public static final String DATE_FORMAT_yyyy_MM_dd_HH_mm_ss = "yyyy-MM-dd HH:mm:ss";
     public static final String TIME_FORMAT_hh_mm = "hh:mm a";
 
     public static final String APP_URL = "app_url";

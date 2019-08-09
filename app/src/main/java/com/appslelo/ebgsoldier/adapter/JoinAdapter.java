@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,8 +59,16 @@ public class JoinAdapter extends RecyclerView.Adapter<JoinAdapter.JoinViewHolder
         }
 
 
+        String strRealDate = tModel.getMatchDate();
+        String strCurrentTime = DateUtils.getCurrentDateTime();
+
+        long realDate = DateUtils.dateToMiliSeconds(strRealDate);
+        long currentDate = DateUtils.dateToMiliSeconds(strCurrentTime);
+
         String strDate = DateUtils.ddMMMMyyyy(tModel.getMatchDate());
         String strTime = DateUtils.hhmm(tModel.getMatchDate());
+        int joinedNumber = Integer.parseInt(tModel.getTotalJoined());
+        int totalPlayer = Integer.parseInt(tModel.getTotalPlayers());
 
         joinViewHolder.tv_matchJoin_gameName.setText(tModel.getMatchName());
         joinViewHolder.tv_matchJoin_date.setText("Date : "+strDate);
@@ -79,14 +88,31 @@ public class JoinAdapter extends RecyclerView.Adapter<JoinAdapter.JoinViewHolder
 
         if (tModel.getJoinedStatus().equals("1")){
             joinViewHolder.btnJoinMatch.setText("Joined");
-            joinViewHolder.btnJoinMatch.setTextColor(mContext.getResources().getColor(R.color.white));
+            joinViewHolder.btnJoinMatch.setTextColor(mContext.getResources().getColor(R.color.black));
             joinViewHolder.btnJoinMatch.setBackgroundResource(R.drawable.bg_btn_selected);
             joinViewHolder.btnJoinMatch.setEnabled(false);
-        } else {
+        }
+        else {
             joinViewHolder.btnJoinMatch.setText("Join");
-            joinViewHolder.btnJoinMatch.setTextColor(mContext.getResources().getColor(R.color.golden));
+            joinViewHolder.btnJoinMatch.setTextColor(mContext.getResources().getColor(R.color.white));
             joinViewHolder.btnJoinMatch.setEnabled(true);
         }
+        if (joinedNumber>=totalPlayer){
+            joinViewHolder.btnJoinMatch.setText("Match Full");
+            joinViewHolder.btnJoinMatch.setTextColor(mContext.getResources().getColor(R.color.black));
+            joinViewHolder.btnJoinMatch.setBackgroundResource(R.drawable.bg_btn_selected);
+            joinViewHolder.btnJoinMatch.setEnabled(false);
+
+        }
+        if (currentDate>=realDate){
+            joinViewHolder.btnJoinMatch.setText("Match Started");
+            joinViewHolder.btnJoinMatch.setTextColor(mContext.getResources().getColor(R.color.black));
+            joinViewHolder.btnJoinMatch.setBackgroundResource(R.drawable.bg_btn_selected);
+            joinViewHolder.btnJoinMatch.setEnabled(false);
+
+        }
+
+
 
 
         joinViewHolder.btnJoinMatch.setOnClickListener(new View.OnClickListener() {

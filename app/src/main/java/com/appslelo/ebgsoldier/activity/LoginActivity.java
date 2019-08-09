@@ -13,6 +13,7 @@ import com.appslelo.ebgsoldier.R;
 import com.appslelo.ebgsoldier.model.login.ModelLogin;
 import com.appslelo.ebgsoldier.presenter.PresenterLogin;
 import com.appslelo.ebgsoldier.storage.SharedPrefManager;
+import com.appslelo.ebgsoldier.utils.Constant;
 import com.appslelo.ebgsoldier.utils.CustomToast;
 import com.appslelo.ebgsoldier.utils.Validate;
 
@@ -62,7 +63,8 @@ public class LoginActivity extends AppCompatActivity {
                 callLoginApi();
                 break;
          case R.id.tv_login_forgotPass:
-                sendMail();
+             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Constant.FORGOT_PASS_LINK));
+             startActivity(intent);
                 break;
         }
     }

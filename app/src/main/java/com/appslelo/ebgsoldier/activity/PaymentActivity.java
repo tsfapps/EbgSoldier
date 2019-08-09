@@ -102,7 +102,7 @@ public class PaymentActivity extends AppCompatActivity {
 
             mCustId = tSharedPrefManager.getUserId();
             mEmail = tSharedPrefManager.getUserEmail();
-            mMobile = tSharedPrefManager.getUserPhone();
+            mMobile = tSharedPrefManager.getMobile();
             String mTemp= mCustId.substring(0, Math.min(mCustId.length(), 6));
             mOrderId = mTemp + getOrderId();
             mIndustryId = "Retail";
@@ -116,7 +116,6 @@ public class PaymentActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_payment)
     public void btn_paymentClicked(View view){
-        Log.d("danny","onStartPayment amount to pay : "+mAmount);
         if (mAmount != null) {
             if (mPaymentBtn.getText().toString().equalsIgnoreCase("Add")) {
                 generateChecksumApi();
@@ -136,7 +135,6 @@ public class PaymentActivity extends AppCompatActivity {
         double wallet = Double.parseDouble(tSharedPrefManager.getUserWallet());
         bonus = Double.parseDouble(tSharedPrefManager.getUserBonus());
         bonusAmount = mEntryFee * 0.20;
-        Log.d("danny","Bonus amount : "+ bonus + "20% of bonus :"+ bonusAmount);
         mWalletAmountTV.setText(String.valueOf(wallet));
         mJoinAmountTV.setText(String.valueOf(mEntryFee));
         mBonusAmountTV.setText(String.valueOf(bonus));
@@ -290,7 +288,6 @@ public class PaymentActivity extends AppCompatActivity {
                 assert response.body() != null;
                 if (!response.body().getError()){
                     Toast.makeText(getApplicationContext(), "Amount added in wallet successfully", Toast.LENGTH_LONG).show();
-
                     tSharedPrefManager.setUserWallet(String.valueOf(response.body().getWallet()));
                      updateWalletAmount();
                 }

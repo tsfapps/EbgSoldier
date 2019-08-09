@@ -17,6 +17,7 @@ import com.appslelo.ebgsoldier.R;
 import com.appslelo.ebgsoldier.fragment.ResultDetailFragment;
 import com.appslelo.ebgsoldier.model.ModelMatchResult;
 import com.appslelo.ebgsoldier.utils.Constant;
+import com.appslelo.ebgsoldier.utils.DateUtils;
 
 import java.util.List;
 
@@ -43,9 +44,11 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
     @Override
     public void onBindViewHolder(@NonNull ResultViewHolder resultViewHolder, final int i) {
         final ModelMatchResult tModel = tModels.get(i);
+        String strDate = DateUtils.ddMMMMyyyy(tModel.getMatchDate());
+        String strTime = DateUtils.hhmm(tModel.getMatchDate());
         resultViewHolder.tvResultName.setText(tModel.getMatchName());
-        resultViewHolder.tvResultDate.setText(tModel.getMatchDate());
-        resultViewHolder.tvResultTime.setText(tModel.getMatchTime());
+        resultViewHolder.tvResultDate.setText("Date : "+strDate);
+        resultViewHolder.tvResultTime.setText("Time : "+strTime);
         resultViewHolder.tvResultFirstPrize.setText(tModel.getFirstPrize());
         resultViewHolder.tvResultPerKill.setText(tModel.getPerKillPrize());
         resultViewHolder.tvResultEntryFees.setText(tModel.getEntryFee());

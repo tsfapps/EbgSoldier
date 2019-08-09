@@ -65,7 +65,7 @@ public class TopPlayersFragment extends Fragment {
                         callApiFaq();
 
                     }
-                }, 3000);}
+                }, 2000);}
         });
 
     }
